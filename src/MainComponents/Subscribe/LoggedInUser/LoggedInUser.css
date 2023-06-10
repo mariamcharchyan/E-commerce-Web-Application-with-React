@@ -1,0 +1,95 @@
+.userPart {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 100vh-100px;
+    height: 100vh-100px;
+    margin: 50px;
+}
+
+.information{
+    display: flex;
+    justify-content: space-between;
+}
+
+.personalInformation{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.personalInformation p{
+    font-size: 20px;
+    color: #353069;
+    font-family: oblique;
+}
+
+.userInage {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #353069;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.userInage img {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.aboutPerson{
+    margin: 0 50px 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout{
+    margin-right: 20px;
+}
+
+.logout button{
+    color: #353069;
+    background-color: #efefef;
+    border: 2px solid #353069;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 40px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.logout button:hover{
+    color: #efefef;
+    background-color: #353069;
+}
+
+.logout   button:active {
+    box-shadow: 5px 5px 15px 8px #353069;
+}
+
+.shippingAddresses, .paymentCards, .orders, .deleteAccount{
+    width: 900px;
+    height: 80px;
+    border: 2px solid #353069;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #353069;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.shippingAddresses:hover, .paymentCards:hover, .orders:hover, .deleteAccount:hover{
+    transform: translateY(-10px);
+    box-shadow: 5px 5px 5px 0px #353069;
+}

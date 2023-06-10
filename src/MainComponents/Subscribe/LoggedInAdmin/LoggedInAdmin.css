@@ -1,0 +1,104 @@
+.containerAdmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 4% 0%;
+}
+
+.containerAdminBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    padding: 2%;
+    background-color: #ececec;
+    box-shadow: 5px 5px 15px 8px #4c4974;
+}
+
+.containerAdminTop {
+    display: flex;
+    justify-content: space-around;;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2%;
+    box-shadow: 5px 5px 15px 8px #4c4974;
+}
+
+.containerAdminTop h1{
+color: #353069;
+}
+
+.containerAdminTop button{
+    color: #353069;
+    background-color: #efefef;
+    border: 5px solid #353069;
+    border-radius: 30px;
+    font-size: 20px;
+    height: 40px;
+    width: 110px;
+    cursor: pointer;
+}
+
+.containerAdminTop button:hover{
+    color: #efefef;
+    background-color: #353069;
+  }
+
+.containerAdminBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 840px;
+    /* padding: 10px;
+    margin: 10px; */
+    box-shadow: 5px 5px 15px 8px #4c4974;
+
+}
+
+.containerAdminLeft {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    margin: 10px;
+    /* box-shadow: 5px 5px 15px 8px #4c4974; */
+}
+
+.containerAdminLeft h2, li{
+    color: #353069;
+}
+
+.containerAdminLeft li{
+    list-style-type: none;
+    font-weight: bold;
+    cursor: pointer;
+    width: 150px;
+    padding: 5px 5px 5px 15px;
+}
+.containerAdminLeft li:hover{
+    color: #efefef;
+    /* border: 2px solid #353069; */
+    border-radius: 30px;
+    background-color: #353069;
+  }
+
+.containerAdminRight {
+    flex: 3;
+    display: flex;
+    max-width: 1200px;
+    height: 100%px;
+    background-color: #ececec;
+    border: 6px solid white;
+    /* padding: 10px; */
+    margin: 20px;
+}

@@ -1,0 +1,87 @@
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vh-100px;
+    height: 100vh-100px;
+    margin: 50px;
+}
+
+.cardsTitle h3{
+    font-size: 30px;
+    color: #353069;
+    margin-bottom: 60px;
+}
+
+.card, .addPaymentCard {
+    width: 800px;
+    height: 80px;
+    border: 2px solid #353069;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 0 50px 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    color: #353069;
+}
+
+.cardnumber{
+    cursor: pointer;
+}
+.selectedCard{
+    width: 800px;
+    height: 80px;
+    border: 2px solid #353069;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    padding: 0 50px 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    color: #353069;
+    box-shadow: 1px 1px 15px 5px #353069;
+    transform:scale(1.1);
+}
+
+.card img, .selectedCard img{
+    width: 65px;
+    height: 50px;
+}
+
+.card button, .selectedCard button{
+    color: #efefef;
+    background-color: #353069;
+    border: #efefef;
+    border-radius: 10px;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.card button:active,
+.selectedCard button:active{
+    box-shadow: none;
+    transform:none
+}
+
+.card button:hover,
+.selectedCard button:hover{
+    transform:scale(1.3);
+    box-shadow: 1px 1px 15px 5px #353069;
+}
+
+.addPaymentCard img{
+    width: 70px;
+    height: 70px;
+}
+.addPaymentCard {
+    transition: transform 0.1s ease;
+}
+.addPaymentCard .image:hover{
+    transform: scale(1.5);
+}

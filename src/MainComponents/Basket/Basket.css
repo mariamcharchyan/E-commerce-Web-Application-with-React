@@ -1,0 +1,111 @@
+.basket{
+    display: flex;
+    flex-direction: column;
+    /* width: 90%; */
+    margin: 0 10% 0 10%;
+}
+
+.basket-items-title{
+    color: #353069;
+}
+
+.basket-items{
+    display: flex;
+    flex-direction: column;
+    border: 0.1px solid black;
+    border-bottom: none;
+    background-color: #ececec;
+}
+
+.basket-items div{
+    min-height: 70px;
+}
+
+.basket-items div div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.basket-items-header, .basket-items-main, .basket-items-footer {
+    display: grid;
+    grid-template-columns: 50px  150px auto 150px 150px 150px ;
+    /* gap: 2px; */
+    background-color: #ececec;
+    border-bottom: 0.1px solid black;
+    text-align: center;
+}
+
+.basket-items-main .item-name, .basket-items-header .item-description{
+    justify-content: flex-start;
+}
+
+.basket-items-main > div {
+    background-color: white;
+}
+
+.basket-items{
+    color: #353069;
+}
+
+.basket-items-main input {
+    width: 30px;
+    padding: 2px;
+    border: 0.1px solid #353069;
+    color: #353069;
+    align-items: center;
+}
+
+.basket-items-main img{
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+    border: none;
+}
+
+.basket-items-main .item-delete button{
+    color: #efefef;
+    background-color: red;
+    border: #efefef;
+    font-size: 18px;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+
+.basket-items-main .item-delete button:active ,
+.basket-items-footer .items-delete button:active {
+    box-shadow: 5px 5px 15px 8px red;
+  }
+
+.basket-items-footer .items-delete button{
+    color: #efefef;
+    background-color: red;
+    border: #efefef;
+    font-size: 18px;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.basket-items-to-confirmation button {
+    margin-top: 10px;
+    margin-bottom: 100px;
+    color: #efefef;
+    background-color: #353069;
+    border: #efefef;
+    font-size: 18px;
+    height: 40px;
+    width: 160px;
+    cursor: pointer;
+}
+
+.basket-items-to-confirmation button:active{
+    box-shadow: 5px 5px 15px 8px #353069;
+}
+
+.basket-items-to-confirmation {
+    display: flex;
+    justify-content: flex-end;
+}
+

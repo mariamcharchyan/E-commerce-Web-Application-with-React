@@ -1,0 +1,98 @@
+.updateProductContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.updateProductContainer h3 {
+    color: #353069;
+    display: flex;
+    justify-content: center;
+}
+
+.updateProducts {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2px;
+    background-color: white;
+}
+
+.updateProducts > div {
+    background-color: white;
+    text-align: center;
+    font-size: 14px;
+}
+.updateProducts{
+    max-height: 650px;
+    overflow: auto;
+}
+.updateProductData{
+    display: grid;
+    grid-template-columns: 20px  64px 120px 50px 60px 70px 70px auto 110px;
+    gap: 2px;
+    background-color: #ececec;
+    text-align: center;
+}
+.updateProductData p{
+    color: #353069;
+    font-weight: bold;
+} 
+
+.updateProduct p{
+    color: #353069;
+}
+
+.updateProduct{
+    display: grid;
+    grid-template-columns: 20px  64px 120px 50px 60px 70px 70px auto 110px;
+    gap: 2px;
+    background-color: white;
+}
+
+.updateProduct > div {
+    background-color: #ececec;
+    text-align: center;
+    /* padding: 20px 0; */
+    font-size: 14px;
+}
+.updateProduct div {
+    display: flex;
+    align-items: center;
+}
+
+.updateProduct img{
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+}
+
+.productDescription{
+    max-height: 85px;
+    overflow: auto;
+}
+
+.productUpdate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.productUpdate button{
+    background-color: green;
+    width: 70px;
+    height: 30px;
+    align-items: center;
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: 2.5px;
+    border-radius: 5px;
+    cursor: pointer;   
+}
+
+.productUpdate button:active {
+    box-shadow: 5px 5px 15px 8px green;
+  }

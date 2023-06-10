@@ -1,0 +1,54 @@
+.addProductContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.addProductContainer h3 {
+    color: #353069;
+    display: flex;
+    justify-content: center;
+}
+.addProduct{
+    display: flex;
+    flex-direction: column;
+}
+
+.addProductContainer h5, select {
+    color: #353069;
+}
+
+
+.addProduct input, textarea, select{
+    min-width: 300px;
+    max-height: 100px;
+
+}
+
+.successed p{
+    color: green;
+}
+
+.error p{
+    color: red;
+}
+
+.buttonAddProduct button{
+    color: #353069;
+    background-color: #efefef;
+    border: 1px solid #353069;
+    border-radius: 30px;
+    font-size: 16px;
+    height: 30px;
+    width: 200px;
+    cursor: pointer;
+    box-shadow: 5px 5px 15px 8px #353069;
+}
+
+.buttonAddProduct button:active {
+    box-shadow: 0px 0px 0px 0px #353069;
+}

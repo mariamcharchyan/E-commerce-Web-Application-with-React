@@ -1,0 +1,104 @@
+.bindingCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vh-100px;
+    height: 100vh-100px;
+    margin: 50px;
+}
+
+.bindingCardTitle h3{
+    font-size: 30px;
+    color: #353069;
+    margin-bottom: 60px;
+}
+
+.bindingCardMain img{
+    width: 850px;
+}
+
+.cardNumber{
+    position: relative;
+    top: -313px;
+    left: 50px;
+}
+
+.cardNumber input{
+    height: 32px;
+    width: 341px;
+}
+
+.cardExpiry{
+    position: relative;
+    top: -273px;
+    left: 290px;
+}
+
+.cardExpiry input{
+    height: 32px;
+    width: 103px;
+}
+
+.cardHolder{
+    position: relative;
+    top: -228px;
+    left: 53px;
+}
+
+.cardHolder input{
+    height: 32px;
+    width: 341px;
+}
+
+.cardCVV{
+    position: relative;
+    top: -282px;
+    left: 617px;
+}
+
+.cardCVV input{
+    height: 32px;
+    width: 103px;
+}
+
+.cardNumber input,
+.cardExpiry input,
+.cardHolder input,
+.cardCVV input{
+    border: none;
+    outline: none;
+    text-align: center;
+    color: #353069;
+    font-size: 20px;
+    transition: border-color 0.3s ease;
+}
+
+.cardHolder input {
+    padding-left: 20px;
+    text-align: left;
+}
+
+.cardNumber input:focus ,
+.cardExpiry input:focus ,
+.cardHolder input:focus ,
+.cardCVV input:focus {
+    border-color: #353069;
+}
+
+
+
+.bindingCardButton button {
+    margin-bottom: 70px;
+    color: #efefef;
+    background-color: #353069;
+    border-radius: 10px;
+    border: #efefef;
+    font-size: 20px;
+    height: 50px;
+    width: 850px;
+    cursor: pointer;
+}
+
+.bindingCardButton button:active{
+    box-shadow: 5px 5px 15px 8px #353069;
+}

@@ -1,0 +1,57 @@
+.updateProductContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.updateProductContainer h3 {
+    color: #353069;
+    display: flex;
+    justify-content: center;
+}
+
+.updateProductID{
+    background-color: #ececec;
+border: 5px solid white;
+}
+
+.updateProductButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.productSaveButton button{
+    background-color: green;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 70px;
+    height: 30px;
+    align-items: center;
+    margin: 5px;
+}
+
+.productSaveButton button:active {
+    box-shadow: 5px 5px 15px 8px green;
+}
+
+.productCencelButton button{
+    background-color: red;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 90px;
+    height: 30px;
+    align-items: center;
+    margin: 5px;
+}
+
+.productCencelButton button:active {
+    box-shadow: 5px 5px 15px 8px red;
+}

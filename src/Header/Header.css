@@ -1,0 +1,94 @@
+.App-header{
+    background-color: #efefef;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navBarLeft {
+    display: flex;
+    align-items: center;
+    margin: 0px 10px 0px 10px;
+}
+
+.navBarLeftLogo {
+    display: flex;
+    align-items: center;
+    margin: 0px 10px 0px 10px;
+}
+
+.brandLogo {
+    height: 100px;
+}
+
+.navBarLeftItems{
+    display: flex;
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
+    margin: 5px;
+    padding: 2px 5px 2px 5px;
+    font-size: larger;
+    font-weight: bold;
+    /* color: #353069; */
+    color: #3f39ab;
+    transition: transform 0.1s ease;
+}
+
+.link:hover{
+    /* background-color: #efefef;
+    color: #3f39ab;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #3f39ab; */   
+    transform: scale(1.2);
+}
+
+.navBarRight {
+    display: flex;
+    align-items: center;
+    margin: 0px 10px 0px 10px;
+}
+
+.navBarRightAccount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 10px 0px 10px;
+}
+
+.accountImage{
+    height: 30px;
+}
+
+
+.navBarRightBasket {
+    display: flex;
+    align-items: center;
+    margin: 0px 5px 0px 5px;
+}
+
+.basketImage {
+    height: 60px;
+    padding-right: 30px;
+}
+
+.basketProductsQuantity {
+    color: #353069;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid #353069;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -20px;
+    left: -50px;
+}

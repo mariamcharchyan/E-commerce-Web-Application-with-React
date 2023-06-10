@@ -1,0 +1,177 @@
+.CRUDcategoryContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.CRUDcategoryContainer h3{
+    color: #353069;
+    display: flex;
+    justify-content: center;
+}
+
+.CRUDcategoryContainer h4{
+    color: #353069;
+    display: flex;
+    justify-content: start;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.addCategory input {
+    height: 35px;
+    width: 250px;
+    color: #4c4974;
+    border: 2px solid #ececec;
+    border-radius: 4px;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.addCategory input:focus{
+    box-shadow: 5px 5px 15px 5px #4c4974;
+  }
+.getCategoryName  input {
+    height: 30px;
+    width: 150px;
+    color: #4c4974;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    padding-left: 10px;
+    box-shadow: 5px 5px 15px 5px #4c4974;
+}
+
+.getCategoryTitle p{
+    color: #353069;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.addCategory button{
+    background-color: green;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 38px;
+    align-items: center;
+    margin: 5px;
+}
+
+.addCategory button:active {
+    box-shadow: 5px 5px 15px 8px green;
+}
+
+.editCategory button{
+    background-color: green;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    align-items: center;
+    margin: 5px;
+}
+
+.updateCategory button:active, .editCategory button:active {
+    box-shadow: 5px 5px 15px 8px green;
+}
+
+.deleteCategory button{
+    background-color: red;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    align-items: center;
+    margin: 5px;
+}
+
+.deleteCategory button:active, .cancelCategory button:active{
+    box-shadow: 5px 5px 15px 8px red;
+}
+.updateCategory button{
+    background-color: green;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    align-items: center;
+    margin: 5px;
+}
+
+.cancelCategory button{
+    background-color: red;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    align-items: center;
+    margin: 5px;
+}
+.getCategoryBodyItem div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #353069;
+    font-size: 20px;
+}
+
+.getCategory {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2px;
+    background-color: white;
+}
+
+.getCategory > div {
+    background-color: white;
+    text-align: center;
+    font-size: 14px;
+}
+
+.getCategoryTitle{
+    display: grid;
+    grid-template-columns: 60px 200px auto;
+    gap: 2px;
+    background-color: #ececec;
+    text-align: center;
+}
+
+.getCategoryTitle > div {
+    background-color: #ececec;
+    text-align: center;
+    min-height: 50px;
+    /* padding: 20px 0; */
+    font-size: 14px;
+}
+
+.getCategoryBodyItem{
+    display: grid;
+    grid-template-columns: 60px 200px auto auto;
+    gap: 2px;
+    background-color: #ececec;
+    text-align: center;
+}
+
+.getCategoryBodyItem > div {
+    background-color: #ececec;
+    text-align: center;
+    height: 50px;
+    /* padding: 20px 0; */
+    font-size: 14px;
+}

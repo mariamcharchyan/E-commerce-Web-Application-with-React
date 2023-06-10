@@ -1,0 +1,75 @@
+.toConfirmation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px 50px 50px 50px;
+}
+
+
+.toConfirmation img{
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.icon{
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.icon:hover{
+    transform: scale(1.4);
+}
+
+.toConfirmation p{
+    margin: 0 20px 0 20px;
+}
+
+.sippingAddres, .paymentCard, .totalProducts, .totalAmount, .toOrder, .storedCard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 900px;
+    height: 80px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    color: #353069;
+    font-weight: bold;
+}
+.totalProducts, .totalAmount {
+    margin-bottom: 0;
+}
+
+.sippingAddres, .paymentCard {
+    border: 2px solid #353069;
+    border-radius: 10px;
+}
+
+.storedCard{
+    width: 700px;
+    margin: 0px 0px 0px 20px;
+}
+
+.toOrder {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.toOrder button {
+    margin-top: 50px;
+    color: #efefef;
+    background-color: #353069;
+    border: #efefef;
+    font-size: 20px;
+    height: 40px;
+    width: 160px;
+    cursor: pointer;
+}
+
+.toOrder button:active{
+    box-shadow: 5px 5px 15px 8px #353069;
+}
+
+
+
+

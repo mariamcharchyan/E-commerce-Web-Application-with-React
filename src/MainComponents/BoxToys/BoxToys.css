@@ -1,0 +1,110 @@
+.products{
+  display: grid;
+  grid-template-columns: 200px  auto;
+}
+
+.categories{
+  margin: 10px 0 0 50px;
+  color: #353069;
+}
+
+.categories p {
+  font-weight: bold;
+  margin-left: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.categories p:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 5px 0px #353069;
+}
+
+.categories p:active {
+  transform: scale(1.0);
+  box-shadow: 5px 5px 5px 0px #353069;
+}
+
+.categories h3 {
+  margin-top: 40px;
+}
+
+.boxToys {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* background-color: white; */
+    gap: 1.5rem;
+    padding: 1em;
+  }
+    
+  .boxToy {
+    width: 250px;
+    height: 480px;
+    margin: 6px;
+    background-color: #ececec;
+    text-align: center;
+    font-size: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .boxToy:hover {
+    transform: scale(1.1);
+    transition: all 0.2s;
+    box-shadow: 10px 10px 10px #4c4974;
+  }
+  
+  .boxToyImage{
+    display: block;
+    margin: 5px;
+    width: 240px;
+    height: 300px;
+    background-color: white;
+  }
+  .boxToy img{
+    display: block;
+    width: 240px;
+    height: 300px;
+  }
+  
+  .boxToy h4{
+    margin: 5%;
+    color: #353069;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .boxToy p{
+    margin-top: 5%;
+    color: #353069;
+  }
+  .boxToyAdd{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+  }
+  .boxToyAdd button{
+    color: #353069;
+    background-color: #efefef;
+    border: 2px solid #353069;
+    border-radius: 5px;
+    font-size: 18px;
+    height: 30px;
+    width: 160px;
+    cursor: pointer;
+  }
+  .boxToyAdd button:hover{
+    color: #efefef;
+    background-color: #353069;
+  }
+
+  .boxToyAdd   button:active {
+    box-shadow: 5px 5px 15px 8px #353069;
+  }
