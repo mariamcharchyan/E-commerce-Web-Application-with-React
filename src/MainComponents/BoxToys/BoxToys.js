@@ -8,75 +8,76 @@ import { useState } from 'react';
 
 export default function BoxToys(){
 
-  // for categories data 
   const [categories, setCategories] = useState([]);
+  const [catId, setCatId] = useState(null);
 
-  // for Authorization
   const accessToken = localStorage.getItem('token');
+  const userId = localStorage.getItem('id');
 
   const dispatch = useDispatch();
   const boxToysData = useSelector((state) => state.boxToys.data);
-    
-  // const userId = useSelector((state) => state.loginForm.id);
-  const userId = localStorage.getItem('id');
-
+ 
   const handleAddProduct = (productId) => {
-      console.log(productId,userId);
-        fetch('http://localhost:5000/basketItem/new', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `${accessToken}`
-            },
-            body: JSON.stringify({
-                "userId": userId,
-                "productId": productId
-            })
-           })
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            dispatch(fetchBasket(userId));
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
+    console.log(productId,userId);
+    fetch('http://localhost:5000/basketItem/new', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${accessToken}`
+      },
+      body: JSON.stringify({
+        "userId": userId,
+        "productId": productId
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      dispatch(fetchBasket(userId));
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }
   
-    useEffect(() => {
-      dispatch(fetchBoxToysData());
-    }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(fetchBoxToysData(catId));
+  }, [catId]);
 
   //for categories
-    useEffect(() => {   
-      fetch('http://localhost:5000/categories', {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `${accessToken}`
+  useEffect(() => {   
+    fetch('http://localhost:5000/categories', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${accessToken}`
       }
-      })
-          .then(response => response.json())
-          .then(dataCategories => {
-            console.log(dataCategories);
-            const newDataCategories = dataCategories.map(data => ({ id: data.id, name: data.name }));
-            setCategories(newDataCategories);
-          })
-          .catch(error => {
-                  // setShowErrorModal(true);
-              console.error(error);
-      })
+    })
+    .then(response => response.json())
+    .then(dataCategories => {
+      console.log(dataCategories);
+      const newDataCategories = dataCategories.map(data => ({ id: data.id, name: data.name }));
+      setCategories(newDataCategories);
+    })
+    .catch(error => {
+    // setShowErrorModal(true);
+      console.error(error);
+    })
   },[]);
 
     return (
       <div className='products'>
         <div className='categories'>
           <h3>ALL PRODUCTS</h3>
-          <div className='categoryName'><p>All products</p></div>
+          <div className='categoryName'
+            onClick={() => setCatId(null)}
+          ><p>All products</p></div>
           <h3>CATEGORIES</h3>
           {categories.map((category) => (
-            <div className='categoryName' key={category.id}><p>{category.name}</p></div>
+            <div className='categoryName' 
+              key={category.id}
+              onClick={() => setCatId(category.id)}
+            ><p>{category.name}</p></div>
           ))}
         </div>
         <div className='boxToys'>

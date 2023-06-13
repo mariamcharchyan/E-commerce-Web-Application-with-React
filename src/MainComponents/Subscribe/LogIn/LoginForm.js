@@ -1,25 +1,24 @@
 import './LoginForm.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchLoginForm } from "./reducerLoginForm";
 
 export default function LoginForm(){
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMesage, setErrorMesage] = useState("erroe");
+  const [errorMesage, setErrorMesage] = useState("");
   const dispatch = useDispatch(); 
-  console.log(errorMesage);
+
   const status = useSelector((state) => state.loginForm.status);
-  const error = useSelector((state) => state.loginForm.error);
-  const state = useSelector((state) => state.loginForm);
-  console.log(state);
+  // const error = useSelector((state) => state.loginForm.error);
+  // console.log(error);
+  // const state = useSelector((state) => state.loginForm);
+  // console.log(state);
   const navigate = useNavigate();
 
-  const checkStatus = () =>{
-    console.log(status);
-      localStorage.setItem("status", status);
+ const checkStatus = () =>{
       if (status === "admin") {
         console.log('//admin');
         navigate("/loggedin/admin");
@@ -30,7 +29,7 @@ export default function LoginForm(){
         // localStorage.clear();
         console.log('//status: error');
         navigate("/login")
-        setErrorMesage(error)
+        setErrorMesage(status)
       }
   };
   
@@ -38,11 +37,13 @@ export default function LoginForm(){
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(fetchLoginForm({ email, password }))
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-    checkStatus();
+    dispatch(fetchLoginForm({ email, password }));
   };
+  
+
+  useEffect(()=>{
+    checkStatus();
+  },[status])
 
   useEffect(()=>{
     checkStatus();

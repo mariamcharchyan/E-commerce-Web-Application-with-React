@@ -16,7 +16,7 @@ export default function BoxToyID() {
 
   useEffect(() => {
     dispatch(fetchBoxToyDataID(id));
-  }, [id]); // Empty dependency array to run effect only once on mount
+  }, [id]);
 
   console.log(boxToyDataID);
 

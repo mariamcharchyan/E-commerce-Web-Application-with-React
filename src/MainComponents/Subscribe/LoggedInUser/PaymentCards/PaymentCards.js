@@ -4,12 +4,6 @@ import addCardIcon from './images/addCardIcon.png';
 import right from './images/right.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useState} from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { useSelector, useDispatch } from "react-redux";
-// import { fetchLoginForm } from "../LogIn/reducerLoginForm";
-// import { useState, useEffect } from 'react';
-// import { fetchBasket } from '../../Basket/reducerBasket';
-// import { basketSlice } from '../../Basket/reducerBasket';
 
 
 export default function PaymentCards(){
@@ -99,7 +93,7 @@ export default function PaymentCards(){
                 </div>
                 <div>Bind a new card</div>
                 <div>
-                    <Link to="/user/cards/binding"> 
+                    <Link to="/user/cards/binding" style={{ textDecoration: 'none', color: 'inherit' }}> 
                         <img className='image' src={right} alt=""/>
                     </Link>
                 </div>

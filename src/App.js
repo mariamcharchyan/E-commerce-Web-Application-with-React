@@ -12,6 +12,8 @@ import Basket from './MainComponents/Basket/Basket'
 import ToConfirmation from './MainComponents/Basket/ToConfirmation';
 import PaymentCards from './MainComponents/Subscribe/LoggedInUser/PaymentCards/PaymentCards';
 import BindingCard from './MainComponents/Subscribe/LoggedInUser/PaymentCards/BindingCard';
+import ShippingAddresses from './MainComponents/Subscribe/LoggedInUser/ShippingAddresses/ShippingAddresses';
+import SelectShippingAddresses from './MainComponents/Subscribe/LoggedInUser/ShippingAddresses/SelectShippingAddresses';
 
 // import { useState } from 'react';
 
@@ -31,6 +33,8 @@ function App() {
             <Route path='/login' element={<LoginForm />}/>
             <Route path='/loggedin/admin' element={<LoggedInAdmin />}/>
             <Route path='/loggedin/user' element={<LoggedInUser />}/>
+            <Route path='/user/shippingAddresses' element={<ShippingAddresses />}/>
+            <Route path='/user/shippingAddresses/select' element={<SelectShippingAddresses />}/>
             <Route path='/user/cards' element={<PaymentCards />}/>
             <Route path='/user/cards/binding' element={<BindingCard />}/>
             <Route path='/basket' element={<Basket />}/>

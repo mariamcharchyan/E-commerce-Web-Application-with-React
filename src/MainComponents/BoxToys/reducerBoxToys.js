@@ -2,10 +2,16 @@ import { createSlice, createAsyncThunk  } from '@reduxjs/toolkit';
 
 export const fetchBoxToysData = createAsyncThunk(
     'boxToys/fetchBoxToysData',
-    async () => {
-      const response = await fetch('http://localhost:5000/products?offset=0&limit=30');
-      const data = await response.json();
-      return data;
+    async (categoryId) => {
+      if(categoryId === null){
+        const response = await fetch(`http://localhost:5000/products?offset=0&limit=30`);
+        const data = await response.json();
+        return data;
+      } else {
+        const response = await fetch(`http://localhost:5000/products/${categoryId}?offset=0&limit=3`);
+        const data = await response.json();
+        return data;
+      }
     }
   );
 

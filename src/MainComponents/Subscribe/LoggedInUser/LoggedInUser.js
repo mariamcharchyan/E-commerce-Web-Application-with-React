@@ -23,7 +23,7 @@ export default function LoggedInUser(){
     const status = localStorage.getItem('status')
 
     useEffect(() => {
-        if(status !== 'user'){
+        if(status !== 'user' || !status){
             navigate("/login")
         }
     },[])
@@ -41,9 +41,6 @@ export default function LoggedInUser(){
     useEffect(()  => {
         const email = localStorage.getItem('email');
         const password = localStorage.getItem('password');
-        const userId = localStorage.getItem('id');
-
-        dispatch(fetchBasket(userId)); 
 
         fetch('http://localhost:5000/user/data', {
             method: 'POST',
@@ -56,16 +53,21 @@ export default function LoggedInUser(){
         .then(response => response.json())
         .then(data => {
             console.log(data);
-                const newData= {
+            const newData= {
                 image: data.user.image,
                 name: data.user.firstName,
                 surename: data.user.lastName,
                 email: data.user.email,
                 gender: data.user.gender,
                 age: data.user.age
-                };
+            };
             console.log(newData);
+
             setUserData(newData);
+
+            localStorage.setItem("id", data.user.id);
+
+            dispatch(fetchBasket(data.user.id)); 
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -90,31 +92,17 @@ export default function LoggedInUser(){
                 </div>
             </div>
             <div className='aboutPerson'>
-                <div className='shippingAddresses'><b>Shipping Addresses</b></div>
-                <Link to="/user/cards"> 
+                <Link to="/user/shippingAddresses" style={{ textDecoration: 'none', color: 'inherit' }}> 
+                    <div className='shippingAddresses'><b>Shipping Addresses</b></div>
+                </Link>
+                <Link to="/user/cards" style={{ textDecoration: 'none', color: 'inherit' }}> 
                     <div className='paymentCards'><b>Payment Cards</b></div>
                 </Link>
-                <div className='orders'><b>Orders</b></div>
+                <Link to="#" style={{ textDecoration: 'none', color: 'inherit' }}> 
+                    <div className='orders'><b>Orders</b></div>
+                </Link>
                 <div className='deleteAccount'><b>DeleteAccount</b></div>
             </div>
-
-            {/* <div className="userWelcomeMessage">
-                <div></div>
-                <h1>Welcome User!</h1>
-                <button onClick={handleLogout}>Logout</button>
-            </div>
-            <div className='userData'>
-                <div className='userInage'>
-                    <img src={`http://localhost:5000/${userData?.image}`} alt="User Image" />
-                </div>
-                <div className='userDataRight'>
-                    <div><p className='p1'>Name: </p><p className='p2'>{userData.name}</p></div>
-                    <div><p className='p1'>Surename: </p><p className='p2'>{userData.surename}</p></div>
-                    <div><p className='p1'>Email: </p><p className='p2'>{userData.email}</p></div>
-                    <div><p className='p1'>Gender: </p><p className='p2'>{userData.gender}</p></div>
-                    <div><p className='p1'>Age: </p><p className='p2'>{userData.age}</p></div>
-                </div>
-            </div> */}
         </div>
     );
 };

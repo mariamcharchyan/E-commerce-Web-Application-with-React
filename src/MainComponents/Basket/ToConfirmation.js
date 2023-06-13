@@ -4,81 +4,70 @@ import mastercardIcon from '../Subscribe/LoggedInUser/PaymentCards/images/master
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchBasket } from './reducerBasket';
 import { useState } from 'react';
 
 export default function ToConfirmation () {
-    const [shippingAddress, setShippingAddress] = useState("Shipping to the point of issue");
-    const [paymentCard, setPaymentCard] = useState("Payment by card");
-    const [totalProducts, setTotalProducts] = useState(0);
-    const [totalAmount, setTotalAmount] = useState(0);
+    const dispatch = useDispatch(); 
+    const navigate = useNavigate();
+    const userId = localStorage.getItem('id')
+    const cardData = JSON.parse(localStorage.getItem('cardData'));
+    const shippingAddressData = JSON.parse(localStorage.getItem('shippingAddressData'));
+    const totalProducts =useSelector((state) => state.basket.totalProducts);
+    const totalAmount = useSelector((state) => state.basket.totalAmount);
 
-    const storedCardData = JSON.parse(localStorage.getItem('cardData'));
-
-    // userId, cardId, shippingAddressId
-
-
-    // const [refreshBasket,setRefreshBasket] = useState(true)
-
-    // const userId = localStorage.getItem('id');
-    // const userId = useSelector((state) => state.loginForm.id);
-
-    // const dispatch = useDispatch();
-    
-    // useEffect(() => {
-    //     if(userId){
-    //         dispatch(fetchBasket(userId));
-    //     }
-    // },[refreshBasket]);
-
-    // const basketData = useSelector((state) => state.basket.data);
-    // console.log(basketData);
-
-
-    // const hendleDeleteAll = (userId) => {
-    //     fetch(`http://localhost:5000/basketItems/delete/${userId}`, {
-    //         method: 'DELETE',
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //           'Authorization': `${localStorage.getItem('token')}`
-    //         },
-    //         body: JSON.stringify({
-    //             "userId": userId,
-    //         })
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log(data);
-    //         setRefreshBasket(!refreshBasket)
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error:', error);
-    //     });
-    // }
+    const addOrder = () => {
+        fetch(`http://localhost:5000/order/new`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                "userId": userId,
+                "cardId": cardData.id, 
+                "shippingAddressId": shippingAddressData.id
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("addOrder: ", data);
+            navigate("/basket")
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
 
     return (
         <div className="toConfirmation">
-            {/* <div className="toConfirmationTitle"><p> -------------------- Confirmation -------------------- </p></div> */}
             <div className="sippingAddres">
-                <div className="text"><p>{shippingAddress}</p></div>
+                <div className="text">
+                    {shippingAddressData?
+                        <p>{shippingAddressData.address}, {shippingAddressData.state}</p>
+                        :
+                        <p>Select the shipping address</p>
+                    }
+                </div>
                 <div className="icon">
-                    <Link to="#"> 
+                    <Link to="/user/shippingAddresses"> 
                         <img src={pencil} alt="pencil"/>
                     </Link>
                 </div>
             </div>
             <div className="paymentCard">
                 <div className="text">
-                    {storedCardData?
+                    {cardData?
                         <div className='storedCard'>
                             <div>
                                 <img src={mastercardIcon} alt=""/>
                             </div>
-                            <div>{storedCardData.cardNumber}</div>
-                            <div>{storedCardData.cardExpiry}</div>
+                            <div>{cardData.cardNumber}</div>
+                            <div>{cardData.cardExpiry}</div>
                         </div>
                         :
-                        <p>{paymentCard}Payment by card</p>
+                        <p>Select or add a payment card</p>
                     }
                     
                 </div>
@@ -97,7 +86,9 @@ export default function ToConfirmation () {
                 <div className="number"><p>{totalAmount}  USD</p></div>
             </div>
             <div className="toOrder">
-                <button><b>To Order</b></button>
+                <button
+                    onClick={() => addOrder()}
+                ><b>To Order</b></button>
             </div>
         </div>
     )
