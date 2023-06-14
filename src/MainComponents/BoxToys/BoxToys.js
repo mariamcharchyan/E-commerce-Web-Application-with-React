@@ -1,5 +1,6 @@
 import './BoxToys.css';
 import { Link } from 'react-router-dom';
+import { useParams} from "react-router-dom";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBoxToysData } from '../BoxToys/reducerBoxToys';
@@ -104,9 +105,9 @@ export default function BoxToys(){
                 <div className='boxToyAdd'>
                 <button
                   onClick={ () => {handleAddProduct(toyData.id);}} 
-                  style={{ pointerEvents: toyData.quantity <= 1 ? 'none' : 'block' }}
-                > {toyData.quantity <= 1 ? "There is none" : "Add to Basket"}</button>
-
+                  style={{ pointerEvents: toyData.quantity <= 1 ? 'none' : 'block',
+                  color: toyData.quantity <= 1 ? '#b0054c' : ''}}
+                > {toyData.quantity <= 1 ? "Not available" : "Add to Basket"}</button>
                 </div>
             </div>
           ))}

@@ -14,9 +14,9 @@
     align-items: center;
     /* justify-content: center; */
     width: 400px;
-    height: 450px;
+    min-height: 450px;
     padding: 2%;
-    background-color: #ececec;
+    background-color: #ebf1ff;
     box-shadow: 5px 5px 15px 8px #4c4974;
 }
 
@@ -29,7 +29,7 @@
     height: 40px;
     width: 300px;
     color: #4c4974;
-    border: 2px solid #ececec;
+    border: 2px solid #ebf1ff;
     border-radius: 4px;
     font-size: 20px;
     padding-left: 10px;
@@ -73,7 +73,7 @@
 .registerButton {
     height: 35px;
     width: 180px;
-    background-color: #ececec;
+    background-color: #ebf1ff;
     color: #4c4974;
     border:5px solid #4c4974;
     border-radius: 10px;
@@ -82,5 +82,5 @@
 }
 
 .registerButton:active {
-    box-shadow: 5px 5px 15px 8px #2e8a15;
+    box-shadow: 5px 5px 15px 8px #4c4974;
   }

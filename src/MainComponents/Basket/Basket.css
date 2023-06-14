@@ -12,7 +12,7 @@
 .basket-items{
     display: flex;
     flex-direction: column;
-    border: 0.1px solid black;
+    border: 0.1px solid #353069;
     border-bottom: none;
     background-color: #ececec;
 }
@@ -31,7 +31,7 @@
     display: grid;
     grid-template-columns: 50px  150px auto 150px 150px 150px ;
     /* gap: 2px; */
-    background-color: #ececec;
+    background-color: #ebf1ff;
     border-bottom: 0.1px solid black;
     text-align: center;
 }

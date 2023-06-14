@@ -27,8 +27,8 @@ function App() {
         <Header />
         <div className="MainContent">
           <Routes>
-            <Route path="/products" element={<BoxToys />} />
-            <Route path="/product/:id" element={<BoxToyID />} />
+            <Route path='/products' element={<BoxToys />} />
+            <Route path='/product/:id' element={<BoxToyID />} />
             <Route path='/register' element={<Register />}/>
             <Route path='/login' element={<LoginForm />}/>
             <Route path='/loggedin/admin' element={<LoggedInAdmin />}/>

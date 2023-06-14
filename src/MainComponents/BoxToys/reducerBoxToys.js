@@ -8,7 +8,7 @@ export const fetchBoxToysData = createAsyncThunk(
         const data = await response.json();
         return data;
       } else {
-        const response = await fetch(`http://localhost:5000/products/${categoryId}?offset=0&limit=3`);
+        const response = await fetch(`http://localhost:5000/products/${categoryId}?offset=0&limit=30`);
         const data = await response.json();
         return data;
       }

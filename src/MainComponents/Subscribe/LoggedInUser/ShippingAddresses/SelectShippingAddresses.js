@@ -1,4 +1,5 @@
 import './SelectShippingAddresses.css';
+import searchIcon from './searchIcon.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useState} from 'react';
 // import { useNavigate } from 'react-router-dom';
@@ -44,6 +45,29 @@ export default function SelectShippingAddresses(){
         })
     },[]);
 
+    const hendleAddUserShippingAddress = (id) => {
+        console.log(id);
+        fetch('http://localhost:5000/userShippingAddress/new', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${accessToken}`
+            },
+            body: JSON.stringify({
+                "userId": userId,
+                "shippingAddressId": id
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // setRefresh(!refresh);
+        })
+        .catch(error => {
+            // setShowErrorModal(true);
+            console.error(error);
+        })
+    };
 
     return (
         <div className='addressesContainer'>
@@ -52,13 +76,15 @@ export default function SelectShippingAddresses(){
                     <h3>Select Shipping Addresses</h3>
                 </div>
                 <div className='search'>
-                    <input
-                        type='text'
-                        placeholder='Search shipping addres...'
-                        className='serchInput'
-                        onChange={(e) => setSsearchValue(e.target.value)}
-                    />
-                    {/* <img src={imgSerch} alt='' className='serchImg' /> */}
+                    <div className='searchInputContainer'>
+                        <img src={searchIcon} alt='' className='searchImg' />
+                        <input
+                            type='text'
+                            placeholder='Search shipping address...'
+                            className='searchInput'
+                            onChange={(e) => setSsearchValue(e.target.value)}
+                        />
+                    </div>
                 </div>
                 <div className='allAddresses'>
                     {filteredShippingAddresses.map((shippingAddress) => (
@@ -68,7 +94,7 @@ export default function SelectShippingAddresses(){
                             </div>  
                             <div className=''>
                                 <button
-                                    // onClick={() => hendleDeleteUserShippingAddress(shippingAddress.id)}
+                                    onClick={() => hendleAddUserShippingAddress(shippingAddress.id)}
                                 ><b>+</b></button>
                             </div>      
                         </div>

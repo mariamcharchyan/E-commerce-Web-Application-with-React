@@ -45,9 +45,9 @@ export default function LoginForm(){
     checkStatus();
   },[status])
 
-  useEffect(()=>{
-    checkStatus();
-  },[])
+  // useEffect(()=>{
+  //   checkStatus();
+  // },[])
 
     return (
       <div className='containerLoginForm'>
