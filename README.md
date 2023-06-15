@@ -102,6 +102,8 @@ The project structure follows a modular approach to separate concerns and mainta
             - **...** Files for the BoxToys component
         - **Contact**
             - **...** Files for the Contact component
+        - **Favorite**
+            - **...** Files for the Favorite component
         - **Home**
             - **...** Files for the Home component
         - **Subscribe/**
