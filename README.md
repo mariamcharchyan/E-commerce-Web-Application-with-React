@@ -1,71 +1,121 @@
-# Getting Started with Create React App
+# E-commerce Web Application with React and Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This is an E-commerce web application built using React and Redux. It provides a user-friendly interface for browsing and purchasing products from a toy store. The application presents a toy store where users can view products without registration. Users have the option to register and create an account to make purchases, while the admin can log in and perform relevant updates.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* User registration and login functionality for personalized shopping experience.
+* Browse and search products by category or keywords.
+* View detailed product information including images, price, and description.
+* Add products to the shopping basket for later purchase.
+* Checkout process with order placement and payment integration.
+* User profile management for viewing order history and updating personal details.
+* Email verification with Nodemailer for enhanced account security.
+* Categories management for organizing and filtering products.
+* Product and product image management for adding, updating, and deleting products.
+* Shipping addresses management for easy delivery options.
+* User shipping addresses management for saving multiple addresses.
+* Payment card storage for convenient payment options.
+* Order management for tracking orders and managing order items.
+* Basket management for handling product selection during the shopping process.
+* Admin panel for managing products, products images, categories, shipping address, orders, and users.
+* Access control to restrict unauthorized access to user functionalities.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Admin Panel Features
+* Admin dashboard for overview and statistical insights.
+* Product management for adding, updating, and deleting products.
+* Product image management for adding, updating, and deleting product images.
+* Category management for organizing and filtering products.
+* Shipping address management for adding, updating, and deleting shipping addresses.
+* Order management for viewing and managing customer orders.
+* User management for viewing and managing user accounts.
+* Access control to restrict unauthorized access to admin functionalities.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+* **React**: A JavaScript library for building user interfaces
+* **Redux**: A predictable state container for JavaScript apps
+* **React Router**: A routing library for React applications
+* **Redux Thunk**: A middleware for Redux to handle asynchronous actions
+* **CSS**: Cascading Style Sheets for styling the application
+* **react-icons**: A library for adding icons to the application
+* **fetch**: A JavaScript API for making HTTP requests
+* **map**: A JavaScript method for iterating over arrays
+* **Hooks**: React hooks for managing state and side effects:
+  - **useDispatch**: A hook from React Redux to dispatch actions
+  - **useSelector**: A hook from React Redux to extract data from the Redux store
+  - **useParams**: A hook from React Router to access URL parameters
+  - **useEffect**: A hook from React for handling side effects in functional components
+  - **useState**: A hook from React for managing state in functional components
+  - **...**
+* **localStorage**: A web API for storing data locally in the browser
+* **...**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+```
+git clone https://github.com/mariamcharchyan/E-commerce-Web-Application-with-React.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Navigate to the project directory:
+```
+cd E-commerce-Web-Application-with-React
+```
 
-### `npm run eject`
+3. Install the dependencies:
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Start the development server using:
+```
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open your web browser and access the application at: `http://localhost:5000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project Structure
 
-## Learn More
+The project structure follows a modular approach to separate concerns and maintain a well-organized codebase. Here's an overview of the main directories and files:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **public/**
+  - **index.html** HTML template for the application
+- **src/**
+    - **app/**
+        - **store.js** Redux store configuration
+    - **Footer/**
+        - **...** Files for the Footer component
+    - **Header/**
+        - **...** Files for the Header component
+    - **MainComponents/**
+        - **About**
+            - **...** Files for the About component
+        - **Basket/**
+            - **...** Files for the Basket component
+        - **BoxToys/**
+            - **...** Files for the BoxToys component
+        - **Contact**
+            - **...** Files for the Contact component
+        - **Subscribe/**
+            - **LoggedInAdmin**
+                - **...** Files for the Logged In Admin subcomponent
+            - **LoggedInUser**
+                - **...** Files for the Logged In User subcomponent
+            - **LogIn**
+                - **...** Files for the LogIn subcomponent
+            - **Register**
+                - **...** Files for the Register subcomponent
+    - **App.js** Root component of the application
+    - **index.js** Entry point of the application
+- **package.json** Project configuration and dependencies
+- **README.md** Project documentation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# E-commerce-Web-Application-with-React" 
+## Acknowledgements
+* The project is inspired by real-world E-commerce platforms and follows industry best practices.
+* Thanks to the open-source community for providing the tools and libraries used in this project.
