@@ -1,17 +1,18 @@
+.CRUDcategoryContainer-0{
+    margin: 30px;
+}
+
 .CRUDcategoryContainer {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    margin: 10px;
-    padding-left: 20px;
-    width: 100%;
-    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
 }
 
-.CRUDcategoryContainer h3{
+.CRUDcategoryContainer h2{
     color: #353069;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .CRUDcategoryContainer h4{
@@ -69,60 +70,23 @@
     box-shadow: 5px 5px 15px 8px green;
 }
 
-.editCategory button{
-    background-color: green;
+.admin-icon-edit, .admin-icon-delete, .admin-icon-update,  .admin-icon-close{
+    font-size: 30px;
     cursor: pointer;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    width: 80px;
-    height: 30px;
-    align-items: center;
-    margin: 5px;
 }
 
-.updateCategory button:active, .editCategory button:active {
-    box-shadow: 5px 5px 15px 8px green;
+.admin-icon-delete, .admin-icon-close{
+    color: red;
 }
 
-.deleteCategory button{
-    background-color: red;
-    cursor: pointer;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    width: 80px;
-    height: 30px;
-    align-items: center;
-    margin: 5px;
+.admin-icon-edit, .admin-icon-update{
+    color: green;
 }
 
-.deleteCategory button:active, .cancelCategory button:active{
-    box-shadow: 5px 5px 15px 8px red;
-}
-.updateCategory button{
-    background-color: green;
-    cursor: pointer;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    width: 80px;
-    height: 30px;
-    align-items: center;
-    margin: 5px;
+.admin-icon-edit:hover, .admin-icon-delete:hover, .admin-icon-update:hover,  .admin-icon-close:hover {
+    font-size: 40px;
 }
 
-.cancelCategory button{
-    background-color: red;
-    cursor: pointer;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    width: 80px;
-    height: 30px;
-    align-items: center;
-    margin: 5px;
-}
 .getCategoryBodyItem div{
     display: flex;
     align-items: center;
@@ -146,14 +110,14 @@
 
 .getCategoryTitle{
     display: grid;
-    grid-template-columns: 60px 200px auto;
+    grid-template-columns: 60px auto 160px;
     gap: 2px;
-    background-color: #ececec;
+    background-color: #ebf1ff;
     text-align: center;
 }
 
 .getCategoryTitle > div {
-    background-color: #ececec;
+    background-color: #ebf1ff;
     text-align: center;
     min-height: 50px;
     /* padding: 20px 0; */
@@ -162,14 +126,14 @@
 
 .getCategoryBodyItem{
     display: grid;
-    grid-template-columns: 60px 200px auto auto;
+    grid-template-columns: 60px auto 80px 80px;
     gap: 2px;
-    background-color: #ececec;
+    background-color: #ebf1ff;
     text-align: center;
 }
 
 .getCategoryBodyItem > div {
-    background-color: #ececec;
+    background-color: #ebf1ff;
     text-align: center;
     height: 50px;
     /* padding: 20px 0; */

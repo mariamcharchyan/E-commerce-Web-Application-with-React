@@ -1,7 +1,11 @@
-import './CRUDcategory.css';
+import './Categories.css';
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { MdEdit } from "react-icons/md";
+import { RxUpdate } from "react-icons/rx";
+import { FaWindowClose } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 
-export default function CRUDcategoryItem({category, setRefresh, refresh, setShowErrorModal}){
+export default function CategoriesItem({category, setRefresh, refresh, setShowErrorModal}){
     // for Authorization
     const accessToken = localStorage.getItem('token');
 
@@ -35,7 +39,7 @@ export default function CRUDcategoryItem({category, setRefresh, refresh, setShow
     }
     const handleDeleteCategory  = (id) => {
         const accessToken = localStorage.getItem('token');
-        fetch(`http://localhost:3000/category/delete/${id}`, {
+        fetch(`http://localhost:5000/category/delete/${id}`, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
@@ -71,14 +75,14 @@ export default function CRUDcategoryItem({category, setRefresh, refresh, setShow
             {isEditing ?
             <>
                 <div className='getCategoryName'><p>{category.name}</p></div>
-                <div className='editCategory'><button onClick={()=>{setIsEditing(false)}}>EDIT</button></div>
-                <div className='deleteCategory'><button onClick={()=>{handleDeleteCategory(category.id);}}>DELETE</button></div>
+                <div className='editCategory'><MdEdit className='admin-icon-edit' onClick={()=>{setIsEditing(false)}} /></div>
+                <div className='deleteCategory'><RiDeleteBin6Fill className='admin-icon-delete' onClick={()=>{handleDeleteCategory(category.id);}}/></div>
             </>
             :
             <>
                 <div className='getCategoryName'><input type='text' value={catNameUpdate} onChange={(event) => setCatNameUpdate(event.target.value)} /></div>
-                <div className='updateCategory'><button  onClick={()=>{handleUpdateCategory(category.id, catNameUpdate); setIsEditing(true);}}>UBDATE</button></div>
-                <div className='cancelCategory'><button onClick={()=>{setIsEditing(true); setRefresh(!refresh)}}>CANCEL</button></div>
+                <div className='updateCategory'><RxUpdate className='admin-icon-update' onClick={()=>{handleUpdateCategory(category.id, catNameUpdate); setIsEditing(true);}} /></div>
+                <div className='cancelCategory'><FaWindowClose className='admin-icon-close' onClick={()=>{setIsEditing(true); setRefresh(!refresh)}} /></div>
             </>
             }
 

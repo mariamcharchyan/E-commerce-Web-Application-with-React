@@ -5,10 +5,15 @@ import { HiUserCircle } from "react-icons/hi2";
 import { FiLogOut } from "react-icons/fi";
 import logo from './picturesHeader/logo.png';
 import {Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { fetchLoginForm } from '../MainComponents/Subscribe/LogIn/reducerLoginForm';
+import { fetchBasket } from '../MainComponents/Basket/reducerBasket';
 
 function Header() {
-    const status = useSelector((state) => state.loginForm.status);
+    // const status = useSelector((state) => state.loginForm.status);
+    const isVerified = localStorage.getItem('isVerified');
+    const status = localStorage.getItem('status');
     const basketData = useSelector((state) => state.basket.data);
     console.log(basketData);
 
@@ -16,6 +21,18 @@ function Header() {
     basketData?.forEach((item) => {
         quantity += item.quantity;
     });
+
+    const dispatch = useDispatch(); 
+    const navigate = useNavigate();
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        dispatch(fetchLoginForm(null, null));
+        dispatch(fetchBasket(null));
+        localStorage.clear();
+        console.log("localStorage.clear()");
+        navigate("/login");
+    }
 
     return(  
         <header className="App-header">
@@ -27,39 +44,41 @@ function Header() {
                     <div className="navBarLeftItems">
                         <Link to="/" className="link">Home</Link>
                         <Link to="/products" className="link">Shop</Link>
-                        <Link to="#" className="link">About</Link>
+                        <Link to="/aboute" className="link">About</Link>
                         <Link to="#" className="link">Contact</Link> 
                     </div>
                 </div>
                 <div className="navBarRight">
                     <div className="navBarRightBasket">
+                        {quantity > 0 ?
                         <div className="basketProductsQuantity">
                             {quantity}
                         </div>
+                        : ''} 
                         <Link to="/basket" className="link-icon">
                             <div><BsCartFill className='header-icon'/></div>
-                            {/* <div><p>Basket</p></div> */}
                         </Link>
                     </div>
-                    {status == 'user' ?  
+                    {status === 'user' && isVerified === 'true' ? (
                     <div className="navBarRightFavorite">
                         <Link to="/login" className="link-icon">
-                            <div><AiTwotoneHeart className='header-icon'/></div>
-                            {/* <div><p>Favorite</p></div> */}
-                        </Link>      
+                        <div>
+                            <AiTwotoneHeart className='header-icon' />
+                        </div>
+                        </Link>
                     </div>
-                    : ''}
+                    ) : ''}
                     <div className="navBarRightAccount">
                         <Link to="/login" className="link-icon">
                             <div><HiUserCircle className='header-icon'/></div>
-                            {/* <div><p>Profile</p></div> */}
                         </Link>      
                     </div>
                     {status === 'user' || status === 'admin' ?  
                     <div className="navBarRightLogout">
-                        <Link to="#" className="link-icon">
+                        <Link to="/login" className="link-icon"
+                            onClick={handleLogout}
+                        >
                             <div><FiLogOut className='header-icon'/></div>
-                            {/* <div><p>Logout</p></div> */}
                         </Link>      
                     </div>
                     : ''}

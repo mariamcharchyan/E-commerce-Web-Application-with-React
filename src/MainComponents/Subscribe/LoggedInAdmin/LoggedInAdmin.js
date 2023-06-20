@@ -1,17 +1,28 @@
 import './LoggedInAdmin.css';
 // import { isExpired } from 'react-jwt';
+import { ImHome } from "react-icons/im";
+import { BsBagFill } from "react-icons/bs";
+import { BsFillCartPlusFill } from "react-icons/bs";
+import { HiViewGrid } from "react-icons/hi";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { HiUserGroup } from "react-icons/hi";
+import { BsBagCheckFill } from "react-icons/bs";
+
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { fetchLoginForm } from "../LogIn/reducerLoginForm";
+// import { fetchLoginForm } from "../LogIn/reducerLoginForm";
 import { useEffect, useState } from 'react';
-import ErrorModal from './Services/ErrorModal'
-import AdminPart from './AdminPart/AdminPart';
-import Warning from './Services/Warning/Warning';
-import GetProduct from './Services/GetProduct/GetProduct';
-import DeleteProduct from './Services/DeleteProduct/DeleteProduct';
-import AddProduct from './Services/AddProduct/AddProduct';
-import UpdateProduct from './Services/UpdateProduct/UpdateProduct';
-import CRUD_Category from './Services/CRUDcategory/CRUDcategory';
+// import ErrorModal from './Services/ErrorModal'
+// import AdminPart from './AdminPart/AdminPart';
+// import Warning from './Services/Warning/Warning';
+// import GetProduct from './Services/GetProduct/GetProduct';
+// import DeleteProduct from './Services/DeleteProduct/DeleteProduct';
+// import AddProduct from './Services/AddProduct/AddProduct';
+// import UpdateProduct from './Services/UpdateProduct/UpdateProduct';
+// import CRUD_Category from './Services/CRUDcategory/CRUDcategory';
+import Categories from './ComponentsAdmin/Categories/Categories';
+import Addresses from './ComponentsAdmin/Addreses/Addresses';
+import Products from './ComponentsAdmin/Products/Products';
 
 
 export default function LoggedInAdmin(){
@@ -32,7 +43,35 @@ export default function LoggedInAdmin(){
         }
     },[])
 
+    // for Authorization
+    const accessToken = localStorage.getItem('token');
 
+    //for Get User data
+    const [userData, setUserData] = useState([]);
+
+    useEffect(()  => {
+        const email = localStorage.getItem('email');
+        const password = localStorage.getItem('password');
+
+        fetch('http://localhost:5000/user/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${accessToken}`
+            },
+            body: JSON.stringify({email, password})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setUserData(data);
+        })
+        .catch((error) => {
+            // setError(`Error: ${error}`)
+            console.error('Error:', error);
+        });
+    
+    },[]);
     // function isTokenExpired(token) {
 
     //    return isExpired(token)
@@ -49,21 +88,22 @@ export default function LoggedInAdmin(){
     //     }else{console.log("Access token!");}
     // },[])
 
-    //for admin or services data
-    const [adminOrServices, setAdminOrServices] = useState(true);
+    // //for admin or services data
+    // const [adminOrServices, setAdminOrServices] = useState(true);
 
-    function AdminOrServices(truORfalse) {
-        setAdminOrServices(truORfalse);
-    }
+    // function AdminOrServices(truORfalse) {
+    //     setAdminOrServices(truORfalse);
+    // }
 
     //for acardion in services
     const [services, setServices] = useState({
-        warning: true,
-        getProduct: false,
-        deleteProduct: false,
+        dashboard: true,
+        products: false,
         addProduct: false,
-        updateProduct: false,
-        CRUDcategory:false,
+        categories: false,
+        shippingAddresses: false,
+        users: false,
+        orders: false,
     });
     console.log(services);
 
@@ -83,16 +123,65 @@ export default function LoggedInAdmin(){
 
     //for Logout button
 
-    const handleLogout = (e) => {
-        e.preventDefault();
-        dispatch(fetchLoginForm(null, null));
-        localStorage.clear();
-        navigate("/login");
-    }
+    // const handleLogout = (e) => {
+    //     e.preventDefault();
+    //     dispatch(fetchLoginForm(null, null));
+    //     localStorage.clear();
+    //     navigate("/login");
+    // }
 
     return (
         <div className='containerAdmin'>
-            <div className='containerAdminBox'>
+            <div className='containerAdminLeft'>
+                <div className='adminPersonalInformation'>
+                    <div className='adminInage'>
+                        <img src={`http://localhost:5000/${userData?.user?.image}`} alt="User Image" />
+                    </div>
+                    <div className='adminTitle'>
+                        <h2>Admin</h2>
+                    </div>
+                </div>
+                <div className='Dashboard' onClick={() => setService("dashboard")} >
+                    <div><ImHome className={services.dashboard ? 'admin-icon-active' : 'admin-icon'}/></div>
+                    <div>Dashboard</div>
+                </div>
+                <div className='Products' onClick={() => setService("products")} >
+                    <div><BsBagFill className={services.products ? 'admin-icon-active' : 'admin-icon'}/></div>
+                    <div>Products</div>
+                </div>
+                <div className='AddProduct' onClick={() => setService("addProduct")} >
+                    <div><BsFillCartPlusFill className={services.addProduct ? 'admin-icon-active' : 'admin-icon'}/></div>
+                    <div>Add Product</div>
+                </div>
+                <div className='Categories' onClick={() => setService("categories")} >
+                    <div><HiViewGrid className={services.categories ? 'admin-icon-active' : 'admin-icon'}/></div>
+                    <div>Categories</div>
+                </div>
+                <div className='ShippingAddresses' onClick={() => setService("shippingAddresses")} >
+                    <div><FaMapMarkerAlt className={services.shippingAddresses ? 'admin-icon-active' : 'admin-icon'}/></div>
+                    <div>Addresses</div>
+                </div>
+                <div className='Users' onClick={() => setService("users")} >
+                    <div><HiUserGroup className={services.users ? 'admin-icon-active' : 'admin-icon'}/></div>
+                    <div>Users</div>
+                </div>
+                <div className='Orders' onClick={() => setService("orders")} >
+                    <div><BsBagCheckFill className={services.orders ? 'admin-icon-active' : 'admin-icon'}/></div>
+                    <div>Orders</div>
+                </div>
+            </div>
+            <div className='containerAdminRight'>
+                {services.products ? <Products setShowErrorModal={setShowErrorModal}/> : null}
+            
+                {services.categories ? <Categories setShowErrorModal={setShowErrorModal}/> : null}
+                {services.shippingAddresses ? <Addresses setShowErrorModal={setShowErrorModal}/> : null}
+                {/* {services.dashboard ? <Dashboard /> : null}
+                {services.products ? <Products /> : null}
+                {services.addProduct ? <AddProduct /> : null}
+                {services.users ? <Users /> : null}
+                {services.orders ? <Orders /> : null} */}
+            </div>
+            {/* <div className='containerAdminBox'>
                 <div className='containerAdminTop'>
                     {adminOrServices ?
                     <button onClick={() => AdminOrServices(false)}>Services</button>
@@ -138,7 +227,7 @@ export default function LoggedInAdmin(){
                  }
                     
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

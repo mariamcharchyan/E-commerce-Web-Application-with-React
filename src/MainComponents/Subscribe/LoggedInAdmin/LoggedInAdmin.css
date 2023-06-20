@@ -1,104 +1,92 @@
 .containerAdmin {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 4% 0%;
+    min-height: 100vh;
+    /* border-bottom: 2px solid #4c4974;
+    border-top: 5px solid #4c4974; */
 }
-
-.containerAdminBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    height: 90%;
-    padding: 2%;
-    background-color: #ececec;
-    box-shadow: 5px 5px 15px 8px #4c4974;
-}
-
-.containerAdminTop {
-    display: flex;
-    justify-content: space-around;;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin-bottom: 2%;
-    box-shadow: 5px 5px 15px 8px #4c4974;
-}
-
-.containerAdminTop h1{
-color: #353069;
-}
-
-.containerAdminTop button{
-    color: #353069;
-    background-color: #efefef;
-    border: 5px solid #353069;
-    border-radius: 30px;
-    font-size: 20px;
-    height: 40px;
-    width: 110px;
-    cursor: pointer;
-}
-
-.containerAdminTop button:hover{
-    color: #efefef;
-    background-color: #353069;
-  }
-
-.containerAdminBottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: 840px;
-    /* padding: 10px;
-    margin: 10px; */
-    box-shadow: 5px 5px 15px 8px #4c4974;
-
-}
-
+  
 .containerAdminLeft {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    margin: 10px;
-    /* box-shadow: 5px 5px 15px 8px #4c4974; */
+    width: 250px;
+    min-height: 100vh;
+    margin: 20px 20px 20px 40px;
+    /* background-color: #ebf1ff; */
+    /* border-bottom: 2px solid #4c4974;
+    border-top: 2px solid #4c4974; */
+    /* border-right:  2px solid #4c4974;; */
+    border: 5px solid #ebf1ff;
+    padding-left: 20px;
 }
 
-.containerAdminLeft h2, li{
-    color: #353069;
-}
-
-.containerAdminLeft li{
-    list-style-type: none;
-    font-weight: bold;
-    cursor: pointer;
-    width: 150px;
-    padding: 5px 5px 5px 15px;
-}
-.containerAdminLeft li:hover{
-    color: #efefef;
-    /* border: 2px solid #353069; */
-    border-radius: 30px;
-    background-color: #353069;
-  }
-
+  
 .containerAdminRight {
-    flex: 3;
+    flex-grow: 1;
+    min-height: 100vh;
+    margin: 20px 60px 20px 20px;
+    /* padding-top: 40px; */
+    /* border-bottom: 2px solid #4c4974; */
+    /* border: 2px solid #4c4974; */
+    border: 5px solid #ebf1ff;
+}
+
+.adminPersonalInformation{
     display: flex;
-    max-width: 1200px;
-    height: 100%px;
-    background-color: #ececec;
-    border: 6px solid white;
-    /* padding: 10px; */
-    margin: 20px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.adminInage {
+    width: 100px;
+    height: 100px;
+    border: 5px solid #ebf1ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.adminInage img {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminTitle h2{
+    font-weight: 800;
+    /* font-size: 40px; */
+    padding-left: 20px;
+    color: #353069;
+    text-shadow: 3px 3px 0px #ebf1ff;
+}
+
+.Dashboard, .Products, .AddProduct, .Categories,
+.ShippingAddresses, .Users, .Orders {
+    display: flex;
+    margin-bottom: 5px;
+    /* font-weight: 500; */
+    cursor: pointer;
+    align-items: baseline;
+}
+
+.Dashboard div, .Products div, .AddProduct div, .Categories div,
+.ShippingAddresses div, .Users div, .Orders div {
+    display: flex;
+    padding-right: 10px;
+    font-size: larger;
+    font-weight: bold;
+    color: #353069;
+    text-shadow: 3px 3px 0px #ebf1ff;
+}
+
+.admin-icon{
+    font-size: 30px;
+    color: #b9cbf9;
+}
+
+.admin-icon-active{
+    font-size: 30px;
+    color: #353069;
 }

@@ -100,12 +100,26 @@
     cursor: pointer;
 }
 
-.basket-items-to-confirmation button:active{
+.basket-items-to-confirmation button:active,
+.basket-items-to-order button:active{
     box-shadow: 5px 5px 15px 8px #353069;
 }
 
-.basket-items-to-confirmation {
+.basket-items-to-confirmation,
+.basket-items-to-order {
     display: flex;
     justify-content: flex-end;
 }
 
+.basket-items-to-order button {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 100px;
+    color: #efefef;
+    background-color: #353069;
+    border: #efefef;
+    font-size: 18px;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+}

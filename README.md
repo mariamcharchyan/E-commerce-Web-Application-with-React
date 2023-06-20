@@ -1,6 +1,5 @@
 # E-commerce Web Application with React and Redux
 
-
 ## Description
 
 This is an E-commerce web application built using React and Redux. It provides a user-friendly interface for browsing and purchasing products from a toy store. The application presents a toy store where users can view products without registration. Users have the option to register and create an account to make purchases, while the admin can log in and perform relevant updates.

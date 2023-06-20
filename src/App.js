@@ -14,6 +14,10 @@ import PaymentCards from './MainComponents/Subscribe/LoggedInUser/PaymentCards/P
 import BindingCard from './MainComponents/Subscribe/LoggedInUser/PaymentCards/BindingCard';
 import ShippingAddresses from './MainComponents/Subscribe/LoggedInUser/ShippingAddresses/ShippingAddresses';
 import SelectShippingAddresses from './MainComponents/Subscribe/LoggedInUser/ShippingAddresses/SelectShippingAddresses';
+import Home from './MainComponents/Home/Home';
+import Aboute from './MainComponents/About/Aboute';
+import Orders from './MainComponents/Subscribe/LoggedInUser/Orders/Orders';
+import OrderId from './MainComponents/Subscribe/LoggedInUser/Orders/OrderId';
 
 // import { useState } from 'react';
 
@@ -27,6 +31,8 @@ function App() {
         <Header />
         <div className="MainContent">
           <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/aboute' element={<Aboute />} />
             <Route path='/products' element={<BoxToys />} />
             <Route path='/product/:id' element={<BoxToyID />} />
             <Route path='/register' element={<Register />}/>
@@ -37,6 +43,8 @@ function App() {
             <Route path='/user/shippingAddresses/select' element={<SelectShippingAddresses />}/>
             <Route path='/user/cards' element={<PaymentCards />}/>
             <Route path='/user/cards/binding' element={<BindingCard />}/>
+            <Route path='/user/orders' element={<Orders />}/>
+            <Route path='/user/orders/:id' element={<OrderId />}/>
             <Route path='/basket' element={<Basket />}/>
             <Route path='/basket/toConfirmation' element={<ToConfirmation />}/>
           </Routes>

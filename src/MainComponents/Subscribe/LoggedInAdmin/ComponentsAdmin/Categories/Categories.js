@@ -1,8 +1,8 @@
-import './CRUDcategory.css';
-import CRUDcategoryItem from './CRUDcategoryItem';
+import './Categories.css';
+import CategoriesItem from './CategoriesItem';
 import { useState, useEffect } from 'react';
 
-export default function CRUDcategory({setShowErrorModal}){
+export default function Categories({setShowErrorModal}){
     // for Authorization
     const accessToken = localStorage.getItem('token');
 
@@ -29,6 +29,7 @@ export default function CRUDcategory({setShowErrorModal}){
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            setRefresh(refresh);
         })
         .catch((error) => {
             if(error == 'Forbidden'){
@@ -40,7 +41,7 @@ export default function CRUDcategory({setShowErrorModal}){
 
     // for categories data 
     useEffect(() => {   
-        fetch('http://localhost:3000/categories', {
+        fetch('http://localhost:5000/categories', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,8 +62,9 @@ export default function CRUDcategory({setShowErrorModal}){
     },[refresh]);
 
     return (
-        <div className='CRUDcategoryContainer'>
-            <div><h3>---------- CRUD Category ----------</h3></div>
+        <div className='CRUDcategoryContainer-0'>
+            <div className='CRUDcategoryContainer'>
+            <div><h2>Categories</h2></div>
             <div className='addCategory'>
                 <div><h4>Add Category</h4></div>
                 <div>
@@ -88,7 +90,7 @@ export default function CRUDcategory({setShowErrorModal}){
                     <div></div>
                 </div>
                 {categories.map((category) => (
-                   <CRUDcategoryItem 
+                   <CategoriesItem
                     key={category.id} 
                     category={category} 
                     setRefresh={setRefresh}
@@ -96,6 +98,7 @@ export default function CRUDcategory({setShowErrorModal}){
                     setShowErrorModal={setShowErrorModal}/>
                 ))}
             </div>
+        </div>
         </div>
     );
 };

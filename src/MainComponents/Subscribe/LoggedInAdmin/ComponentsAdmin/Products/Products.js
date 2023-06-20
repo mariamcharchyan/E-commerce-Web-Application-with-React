@@ -1,7 +1,7 @@
-import './GetProduct.css';
+import './Products.css';
 import { useState, useEffect } from 'react';
 
-export default function GetProduct({setShowErrorModal}){
+export default function Products({setShowErrorModal}){
     // for Authorization
     const accessToken = localStorage.getItem('token');
 
@@ -26,12 +26,13 @@ export default function GetProduct({setShowErrorModal}){
                 console.log(dataProducts);
                 const newDataProducts = dataProducts.map(data => ({
                      id: data.id,
-                     image: data.image,
+                     image: data.productImages[0].imagePath,
                      name: data.name,
-                     categories_id: data.categories_id,
+                     category: data.category.name,
                      price: data.price,
-                     discount_percentage: data.discount_percentage,
+                     discountPercentage: data.discountPercentage,
                      quantity: data.quantity,
+                     quantity_sold: data.quantity_sold,
                      description: data.description,
                      createdAt: data.createdAt,
                      updatedAt: data.updatedAt
@@ -67,9 +68,9 @@ export default function GetProduct({setShowErrorModal}){
                     <div><p>{product.id}</p></div>
                     <div><img src={product.image}/></div>
                     <div><p>{product.name}</p></div>
-                    <div><p>{product.categories_id}</p></div>
+                    <div><p>{product.category}</p></div>
                     <div><p>{product.price} USD</p></div>
-                    <div><p>{product.discount_percentage} %</p></div>
+                    <div><p>{product.discountPercentage} %</p></div>
                     <div><p>{product.quantity}</p></div>
                     <div className='productDescription'><p>{product.description}</p></div>
                     {/* <div><p>{product.createdAt}</p></div>

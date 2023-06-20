@@ -1,0 +1,10 @@
+.starIcon {
+    position: relative;
+    top: -460px;
+    left: 185px;
+}
+
+.starIcon img {
+    height: 80px;
+    width: 80px;
+}

@@ -1,0 +1,191 @@
+.ShippingAddressesContainer-0{
+    margin: 30px;
+}
+
+.ShippingAddressesContainer {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.ShippingAddressesContainer h2{
+    color: #353069;
+    display: flex;
+    /* justify-content: center; */
+}
+
+.ShippingAddressesContainer h4{
+    color: #353069;
+    display: flex;
+    justify-content: start;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.addShippingAddress{
+    margin-top: 40px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+}
+
+.input p{
+    padding-right: 10px;
+}
+
+.input input {
+    height: 30px;
+    width: 100%;
+    color: #4c4974;
+    border: 2px solid #ececec;
+    border-radius: 4px;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.addShippingAddress input:focus{
+    box-shadow: 5px 5px 15px 5px #4c4974;
+  }
+.getShippingAddressName  input {
+    /* height: 30px;
+    width: 150px; */
+    color: #4c4974;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    padding-left: 10px;
+    box-shadow: 5px 5px 15px 5px #4c4974;
+}
+
+.getShippingAddressTitle p{
+    color: #353069;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addShippingAddress button{
+    background-color: green;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 38px;
+    align-items: center;
+    margin: 5px;
+}
+
+.addShippingAddress button:active {
+    box-shadow: 5px 5px 15px 8px green;
+}
+
+.admin-icon-edit, .admin-icon-delete, .admin-icon-update,  .admin-icon-close{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.admin-icon-delete, .admin-icon-close{
+    color: red;
+}
+
+.admin-icon-edit, .admin-icon-update{
+    color: green;
+}
+
+.admin-icon-edit:hover, .admin-icon-delete:hover, .admin-icon-update:hover,  .admin-icon-close:hover {
+    font-size: 40px;
+}
+
+.getShippingAddressBodyItem div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #353069;
+    font-size: 20px;
+    display: flex;
+}
+
+.getShippingAddress {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2px;
+    background-color: white;
+}
+
+.getShippingAddress > div {
+    background-color: white;
+    text-align: center;
+    font-size: 14px;
+}
+
+.getShippingAddressTitle{
+    display: grid;
+    grid-template-columns: 60px auto 160px;
+    gap: 2px;
+    background-color: #ebf1ff;
+    text-align: center;
+}
+
+.getShippingAddressTitle > div {
+    background-color: #ebf1ff;
+    text-align: center;
+    min-height: 50px;
+    /* padding: 20px 0; */
+    font-size: 14px;
+}
+
+.getShippingAddressBodyItem{
+    display: grid;
+    grid-template-columns: 60px auto 80px 80px;
+    gap: 2px;
+    background-color: #ebf1ff;
+    text-align: center;
+}
+
+.getShippingAddressBodyItem > div {
+    background-color: #ebf1ff;
+    text-align: center;
+    min-height: 50px;
+    /* padding: 20px 0; */
+    font-size: 14px;
+}
+
+.getShippingAddressNameContainer {
+    display: flex;
+    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2px;
+    text-align: center;
+    min-width: 100%;
+    background-color: white;
+}
+
+.getShippingAddressNameContainer > div {
+    background-color: #ebf1ff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* margin-left: 20px; */
+    /* text-align: center; */
+    min-width: 100%;
+    /* min-height: 50px; */
+    /* padding: 20px 0; */
+    font-size: 14px;
+}
+
+.getShippingAddressNameContainer div p{
+    margin: 0px;
+    padding: 5px;
+    padding-left: 10px;
+}

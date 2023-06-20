@@ -13,7 +13,7 @@ export const fetchLoginForm = createAsyncThunk(
       const data1 = await response1.json();
       console.log(data1);
       localStorage.setItem("token", data1?.token);
-      localStorage.setItem("status", data1?.status); 
+      localStorage.setItem("status", data1?.status);
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
       // const response2 = await fetch("http://localhost:5000/user/data", {

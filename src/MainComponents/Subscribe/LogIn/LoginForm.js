@@ -6,16 +6,14 @@ import { fetchLoginForm } from "./reducerLoginForm";
 
 export default function LoginForm(){
 
+  const [refresh, setRefresh] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMesage, setErrorMesage] = useState("");
   const dispatch = useDispatch(); 
 
-  const status = useSelector((state) => state.loginForm.status);
-  // const error = useSelector((state) => state.loginForm.error);
-  // console.log(error);
-  // const state = useSelector((state) => state.loginForm);
-  // console.log(state);
+  // const status = useSelector((state) => state.loginForm.status);
+  let status = localStorage.getItem('status');
   const navigate = useNavigate();
 
  const checkStatus = () =>{
@@ -27,7 +25,7 @@ export default function LoginForm(){
         navigate("/loggedin/user");
       } else {
         // localStorage.clear();
-        console.log('//status: error');
+        console.log('//status: error', status);
         navigate("/login")
         setErrorMesage(status)
       }
@@ -35,9 +33,10 @@ export default function LoginForm(){
   
   // setemailANDpassword({ email, password });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(fetchLoginForm({ email, password }));
+    await dispatch(fetchLoginForm({ email, password }));
+    checkStatus();
   };
   
 
