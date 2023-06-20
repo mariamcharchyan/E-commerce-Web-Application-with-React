@@ -76,7 +76,7 @@ npm install
 npm start
 ```
 
-Open your web browser and access the application at: `http://localhost:5000`.
+Open your web browser and access the application at: `http://localhost:3000`.
 
 
 ## Project Structure
