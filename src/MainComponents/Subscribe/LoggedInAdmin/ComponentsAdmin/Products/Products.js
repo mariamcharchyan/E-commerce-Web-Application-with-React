@@ -1,12 +1,24 @@
 import './Products.css';
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { MdEdit } from "react-icons/md";
+import { RxUpdate } from "react-icons/rx";
+import { FaWindowClose } from "react-icons/fa";
 import { useState, useEffect } from 'react';
+import ProductEdit from './ProductEdit';
 
 export default function Products({setShowErrorModal}){
     // for Authorization
     const accessToken = localStorage.getItem('token');
 
+    const [refresh, setRefresh] = useState(false);
+
+    // for update product
+    const [editing, setEditing] = useState(false);
+    const [editingData, setEditingData] = useState([]);
+
     //for Get Products error status
     const [error, setError] = useState('');
+    console.log(error);
 
     //for Get Products data
     const [productsData, setproductsData] = useState([]);
@@ -14,7 +26,7 @@ export default function Products({setShowErrorModal}){
 
     // for products data 
     useEffect(() => {
-        fetch('http://localhost:5000/products', {
+        fetch('http://localhost:5000/products?offset=1&limit=500', {
             method: 'GET',
             headers: {
             'Content-Type': 'application/json',
@@ -23,10 +35,10 @@ export default function Products({setShowErrorModal}){
         })
             .then(response => response.json())
             .then(dataProducts => {
-                console.log(dataProducts);
+                // console.log(dataProducts);
                 const newDataProducts = dataProducts.map(data => ({
                      id: data.id,
-                     image: data.productImages[0].imagePath,
+                     image: data.productImages,
                      name: data.name,
                      category: data.category.name,
                      price: data.price,
@@ -37,7 +49,7 @@ export default function Products({setShowErrorModal}){
                      createdAt: data.createdAt,
                      updatedAt: data.updatedAt
                     }));
-                    console.log(newDataProducts);
+                    // console.log(newDataProducts);
                      setproductsData(newDataProducts);
             })
             .catch(error => {
@@ -45,39 +57,60 @@ export default function Products({setShowErrorModal}){
                 setError('Error: failed get products')
                 console.error('Error get products:', error);
         })
-},[]);
+    },[refresh]);
+
+    const handleDeleteProduct = (id) => {
+        console.log(id);
+        fetch(`http://localhost:5000/product/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `${accessToken}`
+            }
+           })
+           .then(response => response.json())
+            
+          .then(data => {
+            setRefresh(!refresh);
+            console.log(data);
+          })
+          .catch((error) => {
+            setShowErrorModal(true);
+            // console.error('Error delete product:', error);
+            console.log(error);
+          });
+    }
 
     return (
+        <div className='getProductContainer-0'>
         <div className='getProductContainer'>
-            <div><h3>---------- Get Product ----------</h3></div>
-            <div className='productData'>
-                    <div><p>id</p></div>
-                    <div><p>image</p></div>
-                    <div><p>name</p></div>
-                    <div><p>cat_id</p></div>
-                    <div><p>price</p></div>
-                    <div><p>discount</p></div>
-                    <div><p>quantity</p></div>
-                    <div><p>description</p></div>
-                    {/* <div><p>{product.createdAt}</p></div>
-                    <div><p>{product.updatedAt}</p></div> */}
-            </div>
-            <div className='getProducts'>
+            {editing === false ?
+            <>
+            <div><h2>Products</h2></div>
+            <div className='getProductMain'>
                 {productsData.map((product) => (
-                <div className='product' key={product.id} >
-                    <div><p>{product.id}</p></div>
-                    <div><img src={product.image}/></div>
-                    <div><p>{product.name}</p></div>
-                    <div><p>{product.category}</p></div>
-                    <div><p>{product.price} USD</p></div>
-                    <div><p>{product.discountPercentage} %</p></div>
-                    <div><p>{product.quantity}</p></div>
-                    <div className='productDescription'><p>{product.description}</p></div>
-                    {/* <div><p>{product.createdAt}</p></div>
-                    <div><p>{product.updatedAt}</p></div> */}
-                </div>
+                    <div className='getProductItem' key={product.id}>
+                        <div className='getProductImage'>
+                            <img src={`http://localhost:5000/${product?.image?.[0]?.imagePath}`} alt="Image" />
+                        </div>
+                        <div className='getProductName'>{product.name}</div>
+                        <div className='getProductPrice'>$ {product.price} USD</div>
+                        <div className='getProductIcons'>
+                            <div className='getProductIconEdit'><MdEdit onClick={() => {setEditingData(product); setEditing(true); }}/></div>
+                            <div className='getProductIconDelete'><RiDeleteBin6Fill onClick={() => handleDeleteProduct(product.id)}/></div>
+                        </div>
+                    </div>
                 ))}
             </div>
+            </> : <>
+                <ProductEdit
+                    editingData={editingData}
+                    editing={editing}
+                    setEditing={setEditing}
+                />
+            </>} 
+
+        </div>
         </div>
     );
 };

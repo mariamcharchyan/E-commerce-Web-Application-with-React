@@ -4,7 +4,7 @@ export const fetchBoxToysData = createAsyncThunk(
     'boxToys/fetchBoxToysData',
     async (categoryId) => {
       if(categoryId === null){
-        const response = await fetch(`http://localhost:5000/products?offset=0&limit=30`);
+        const response = await fetch(`http://localhost:5000/products?offset=0&limit=3000`);
         const data = await response.json();
         return data;
       } else {

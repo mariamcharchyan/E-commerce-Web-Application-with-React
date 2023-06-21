@@ -23,6 +23,8 @@ import { useEffect, useState } from 'react';
 import Categories from './ComponentsAdmin/Categories/Categories';
 import Addresses from './ComponentsAdmin/Addreses/Addresses';
 import Products from './ComponentsAdmin/Products/Products';
+import AddProduct from './ComponentsAdmin/AddProduct/AddProduct';
+import ProductEdit from './ComponentsAdmin/Products/ProductEdit';
 
 
 export default function LoggedInAdmin(){
@@ -99,6 +101,7 @@ export default function LoggedInAdmin(){
     const [services, setServices] = useState({
         dashboard: true,
         products: false,
+        productEdit: false,
         addProduct: false,
         categories: false,
         shippingAddresses: false,
@@ -171,8 +174,10 @@ export default function LoggedInAdmin(){
                 </div>
             </div>
             <div className='containerAdminRight'>
+
                 {services.products ? <Products setShowErrorModal={setShowErrorModal}/> : null}
-            
+                {services.productEdit ? <ProductEdit setShowErrorModal={setShowErrorModal}/> : null}
+                {services.addProduct ? <AddProduct setShowErrorModal={setShowErrorModal}/> : null}
                 {services.categories ? <Categories setShowErrorModal={setShowErrorModal}/> : null}
                 {services.shippingAddresses ? <Addresses setShowErrorModal={setShowErrorModal}/> : null}
                 {/* {services.dashboard ? <Dashboard /> : null}
