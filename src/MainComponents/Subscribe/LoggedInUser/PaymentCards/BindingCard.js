@@ -1,10 +1,11 @@
 import './BindingCard.css';
+import jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 import card from './images/card.png';
 // import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 // import { useSelector, useDispatch } from "react-redux";
 // import { fetchLoginForm } from "../LogIn/reducerLoginForm";
-import { useState } from 'react';
+import {  useEffect,useState } from 'react';
 // , useEffect
 // import { fetchBasket } from '../../Basket/reducerBasket';
 // import { basketSlice } from '../../Basket/reducerBasket';
@@ -20,7 +21,22 @@ export default function BindingCard(){
 
     const userId = localStorage.getItem('id');
     const accessToken = localStorage.getItem('token');
+    const isVerified = localStorage.getItem('isVerified');
 
+    //for protect  to the /user url 
+    useEffect(() => {
+        if(accessToken){
+            const decoded = jwt_decode(accessToken)
+            const status = decoded.status
+            if(status !=='user'){
+                navigate("/login")
+            } else if(!isVerified){
+                navigate("/loggedin/user")
+            }
+        } else {
+            navigate("/login")
+        }
+    },[])
 
     const hendleAddCardData = () => {
         fetch('http://localhost:5000/savedCard/new', {

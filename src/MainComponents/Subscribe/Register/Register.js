@@ -1,6 +1,6 @@
 import './Register.css';
 import {Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { fetchLoginForm } from "../LogIn/reducerLoginForm";
@@ -10,7 +10,7 @@ export default function Register() {
   const navigate = useNavigate();
 
   // for Authorization
-  const accessToken = localStorage.getItem('token');
+  // const accessToken = localStorage.getItem('token');
 
   // for newUserData
   const [errorMesage, setErrorMesage] = useState('');

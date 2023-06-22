@@ -1,4 +1,6 @@
 import './PaymentCards.css';
+import jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 import mastercardIcon from './images/mastercardIcon.png';
 import addCardIcon from './images/addCardIcon.png';
 import right from './images/right.png';
@@ -11,10 +13,28 @@ export default function PaymentCards(){
     const userId = localStorage.getItem('id');
     const accessToken = localStorage.getItem('token');
     const storedCardData = JSON.parse(localStorage.getItem('cardData'));
+    const isVerified = localStorage.getItem('isVerified');
+
 
     const [cards, setCards] = useState([]);
     const [refresh, setRefresh] = useState(false);
    
+   //for protect  to the /user url 
+   const navigate = useNavigate();
+
+   useEffect(() => {
+    if(accessToken){
+        const decoded = jwt_decode(accessToken)
+        const status = decoded.status
+        if(status !=='user'){
+            navigate("/login")
+        } else if(!isVerified){
+            navigate("/loggedin/user")
+        }
+    } else {
+        navigate("/login")
+    }
+    },[])
 
     const hendleDeleteCard = (id) => {
         fetch(`http://localhost:5000/savedCard/delete/${id}`, {

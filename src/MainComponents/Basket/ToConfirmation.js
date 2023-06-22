@@ -1,4 +1,5 @@
 import './ToConfirmation.css'
+import jwt_decode from 'jwt-decode';
 import pencil from './pencil.png';
 import mastercardIcon from '../Subscribe/LoggedInUser/PaymentCards/images/mastercardIcon.png';
 import { Link } from 'react-router-dom';
@@ -16,6 +17,22 @@ export default function ToConfirmation () {
     const shippingAddressData = JSON.parse(localStorage.getItem('shippingAddressData'));
     const totalProducts =useSelector((state) => state.basket.totalProducts);
     const totalAmount = useSelector((state) => state.basket.totalAmount);
+
+    //for protect  to the /user url 
+    const accessToken = localStorage.getItem('token');
+
+    useEffect(() => {
+        if(accessToken){
+            const decoded = jwt_decode(accessToken)
+            console.log(decoded);
+            const status = decoded.status
+            if(status !=='user'){
+                navigate("/login")
+            }
+        } else {
+            navigate("/login")
+        }
+    },[])
 
     const addOrder = () => {
         fetch(`http://localhost:5000/order/new`, {

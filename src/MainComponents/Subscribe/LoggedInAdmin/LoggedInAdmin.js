@@ -1,5 +1,6 @@
 import './LoggedInAdmin.css';
 // import { isExpired } from 'react-jwt';
+import jwt_decode from 'jwt-decode';
 import { ImHome } from "react-icons/im";
 import { BsBagFill } from "react-icons/bs";
 import { BsFillCartPlusFill } from "react-icons/bs";
@@ -28,8 +29,9 @@ import ProductEdit from './ComponentsAdmin/Products/ProductEdit';
 
 
 export default function LoggedInAdmin(){
+    // for Authorization
+    const accessToken = localStorage.getItem('token');
 
-    
     const dispatch = useDispatch(); 
     const navigate = useNavigate();
 
@@ -37,17 +39,20 @@ export default function LoggedInAdmin(){
     const [showErrorModal, setShowErrorModal] = useState(false);
 
     //for protect  to the /amin url 
-    const status = localStorage.getItem('status')
-
     useEffect(() => {
-        if(status !== 'admin'){
+        if(accessToken){
+            const decoded = jwt_decode(accessToken)
+            console.log(decoded);
+            const status = decoded.status
+            if(status !=='admin'){
+                navigate("/login")
+            }
+        } else {
             navigate("/login")
         }
     },[])
 
-    // for Authorization
-    const accessToken = localStorage.getItem('token');
-
+    
     //for Get User data
     const [userData, setUserData] = useState([]);
 

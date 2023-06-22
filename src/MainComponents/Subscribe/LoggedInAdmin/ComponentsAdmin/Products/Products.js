@@ -14,7 +14,7 @@ export default function Products({setShowErrorModal}){
 
     // for update product
     const [editing, setEditing] = useState(false);
-    const [editingData, setEditingData] = useState([]);
+    const [editingID, setEditingID] = useState(null);
 
     //for Get Products error status
     const [error, setError] = useState('');
@@ -26,7 +26,7 @@ export default function Products({setShowErrorModal}){
 
     // for products data 
     useEffect(() => {
-        fetch('http://localhost:5000/products?offset=1&limit=500', {
+        fetch('http://localhost:5000/products?offset=0&limit=500', {
             method: 'GET',
             headers: {
             'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export default function Products({setShowErrorModal}){
         })
             .then(response => response.json())
             .then(dataProducts => {
-                // console.log(dataProducts);
+                console.log(dataProducts);
                 const newDataProducts = dataProducts.map(data => ({
                      id: data.id,
                      image: data.productImages,
@@ -68,14 +68,17 @@ export default function Products({setShowErrorModal}){
               'Authorization': `${accessToken}`
             }
            })
-           .then(response => response.json())
-            
-          .then(data => {
+           .then(response => {
             setRefresh(!refresh);
+            return response.json();
+            
+        })
+          .then(data => {
+            // setRefresh(!refresh);
             console.log(data);
           })
           .catch((error) => {
-            setShowErrorModal(true);
+            // setShowErrorModal(true);
             // console.error('Error delete product:', error);
             console.log(error);
           });
@@ -96,7 +99,7 @@ export default function Products({setShowErrorModal}){
                         <div className='getProductName'>{product.name}</div>
                         <div className='getProductPrice'>$ {product.price} USD</div>
                         <div className='getProductIcons'>
-                            <div className='getProductIconEdit'><MdEdit onClick={() => {setEditingData(product); setEditing(true); }}/></div>
+                            <div className='getProductIconEdit'><MdEdit onClick={() => {setEditingID(product.id); setEditing(true); }}/></div>
                             <div className='getProductIconDelete'><RiDeleteBin6Fill onClick={() => handleDeleteProduct(product.id)}/></div>
                         </div>
                     </div>
@@ -104,7 +107,7 @@ export default function Products({setShowErrorModal}){
             </div>
             </> : <>
                 <ProductEdit
-                    editingData={editingData}
+                    editingID={editingID}
                     editing={editing}
                     setEditing={setEditing}
                 />

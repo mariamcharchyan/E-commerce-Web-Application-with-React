@@ -1,4 +1,6 @@
 import './Orders.css';
+import jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useParams} from "react-router-dom";
 import { useEffect } from 'react';
@@ -12,6 +14,24 @@ export default function Orders(){
 
   const accessToken = localStorage.getItem('token');
   const userId = localStorage.getItem('id');
+  const isVerified = localStorage.getItem('isVerified');
+
+  //for protect  to the /user url 
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if(accessToken){
+      const decoded = jwt_decode(accessToken)
+      const status = decoded.status
+      if(status !=='user'){
+        navigate("/login")
+      } else if(!isVerified){
+        navigate("/loggedin/user")
+      }
+    } else {
+      navigate("/login")
+    }
+  },[])
 
   useEffect(() => {   
     fetch(`http://localhost:5000/orders/${userId}?offset=0&limit=50`, {

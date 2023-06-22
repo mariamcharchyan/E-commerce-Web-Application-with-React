@@ -1,4 +1,6 @@
 import './OrderId.css';
+import jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -10,7 +12,27 @@ export default function OrderId() {
   const [order, setOrder] = useState([]);
   console.log(order);
 
+  const navigate = useNavigate();
+
   const accessToken = localStorage.getItem('token');
+  const isVerified = localStorage.getItem('isVerified');
+
+  //for protect  to the /user url 
+
+  useEffect(() => {
+    if(accessToken){
+      const decoded = jwt_decode(accessToken)
+      const status = decoded.status
+      if(status !=='user'){
+        navigate("/login")
+      } else if(!isVerified){
+        navigate("/loggedin/user")
+      } 
+    } else {
+      navigate("/login")
+    }
+  },[])
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/orderItems/${id}`, {

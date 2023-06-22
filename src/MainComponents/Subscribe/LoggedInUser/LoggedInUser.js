@@ -1,4 +1,5 @@
 import './LoggedInUser.css';
+import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchLoginForm } from "../LogIn/reducerLoginForm";
@@ -23,10 +24,15 @@ export default function LoggedInUser(){
     const navigate = useNavigate();
 
     //for protect  to the /user url 
-    const status = localStorage.getItem('status')
-
     useEffect(() => {
-        if(status !== 'user' || !status){
+        if(accessToken){
+            const decoded = jwt_decode(accessToken)
+            console.log(decoded);
+            const status = decoded.status
+            if(status !=='user'){
+                navigate("/login")
+            }
+        } else {
             navigate("/login")
         }
     },[])

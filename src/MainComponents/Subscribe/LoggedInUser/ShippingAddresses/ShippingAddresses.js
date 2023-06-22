@@ -1,4 +1,6 @@
 import './ShippingAddresses.css';
+import jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useEffect, useState} from 'react';
 // import { useNavigate } from 'react-router-dom';
@@ -10,8 +12,11 @@ import { useEffect, useState} from 'react';
 
 export default function ShippingAddresses(){
 
+    const navigate = useNavigate();
+
     const userId = localStorage.getItem('id');
     const accessToken = localStorage.getItem('token');
+    const isVerified = localStorage.getItem('isVerified');
 
     const [refresh, setRefresh] = useState(false);
     const [userShippingAddresses, setUserShippingAddresses] = useState([]);
@@ -23,7 +28,21 @@ export default function ShippingAddresses(){
     //     setSelectedAddressId(shippingAddressData.id);
     //     localStorage.setItem('shippingAddressData', shippingAddressData);
     // };
-   
+
+      //for protect  to the /user url 
+      useEffect(() => {
+        if(accessToken){
+            const decoded = jwt_decode(accessToken)
+            const status = decoded.status
+            if(status !=='user'){
+                navigate("/login")
+            } else if(!isVerified){
+                navigate("/loggedin/user")
+            }
+        } else {
+            navigate("/login")
+        }
+    },[])
 
     const hendleDeleteUserShippingAddress = (id) => {
         fetch(`http://localhost:5000/userShippingAddress/delete/${id}`, {

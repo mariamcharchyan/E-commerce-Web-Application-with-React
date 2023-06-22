@@ -130,7 +130,7 @@ export default function Addresses({setShowErrorModal}){
                 </div>
                 {addresses.map((address) => (
                    <AddressesItem
-                    key={addresses.id} 
+                    key={address.id} 
                     address={address} 
                     setRefresh={setRefresh}
                     refresh={refresh}
