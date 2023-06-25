@@ -84,3 +84,66 @@
     color: white;
     background-color: red;
 }
+
+
+/* ----------------ProductEdit--------------------------*/
+
+
+.EditProductContainer-0{
+    margin: 30px;
+}
+
+.EditProductContainer{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.EditProductContainer h2 {
+    color: #353069;
+    display: flex;
+}
+.EditProduct{
+    display: flex;
+    flex-direction: column;
+}
+
+.EditProductContainer h5, select {
+    color: #353069;
+}
+
+.EditProduct input, textarea, select{
+    min-width: 300px;
+    max-height: 100px;
+
+}
+
+.EditAllPictures{
+    display: flex;
+}
+
+.EditImageData{
+    margin: 10px;
+    border: 3px solid #ebf1ff;
+    width: 90px;
+    height: 90px;
+
+}
+
+.EditImageData img{
+    width: 90px;
+    height: 90px;
+}
+
+.EditImageDataDelete{
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: red;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    top: -100px;
+    left: 72px;
+}

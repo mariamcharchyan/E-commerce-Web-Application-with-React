@@ -10,7 +10,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { BsBagCheckFill } from "react-icons/bs";
 
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 // import { fetchLoginForm } from "../LogIn/reducerLoginForm";
 import { useEffect, useState } from 'react';
 // import ErrorModal from './Services/ErrorModal'
@@ -32,11 +32,14 @@ export default function LoggedInAdmin(){
     // for Authorization
     const accessToken = localStorage.getItem('token');
 
-    const dispatch = useDispatch(); 
+    // const dispatch = useDispatch(); 
     const navigate = useNavigate();
 
     // for showErrorModal from logout
     const [showErrorModal, setShowErrorModal] = useState(false);
+
+    // for update product
+    const [editingID, setEditingID] = useState(null);
 
     //for protect  to the /amin url 
     useEffect(() => {
@@ -79,28 +82,6 @@ export default function LoggedInAdmin(){
         });
     
     },[]);
-    // function isTokenExpired(token) {
-
-    //    return isExpired(token)
-    //     // const decoded = jwt.decode(token);
-    //     // const currentTime = Math.floor(Date.now() / 1000); // convert to seconds
-    //     // return decoded.exp < currentTime;
-    // }
-
-    // const accessToken = localStorage.getItem('token');
-    // useEffect(()=>{
-    //     if (isTokenExpired(accessToken)) {
-    //         console.log("Access token has expired!");
-    //         // Send a message to the user or take appropriate action
-    //     }else{console.log("Access token!");}
-    // },[])
-
-    // //for admin or services data
-    // const [adminOrServices, setAdminOrServices] = useState(true);
-
-    // function AdminOrServices(truORfalse) {
-    //     setAdminOrServices(truORfalse);
-    // }
 
     //for acardion in services
     const [services, setServices] = useState({
@@ -128,15 +109,6 @@ export default function LoggedInAdmin(){
             return newServices;
         });
     }
-
-    //for Logout button
-
-    // const handleLogout = (e) => {
-    //     e.preventDefault();
-    //     dispatch(fetchLoginForm(null, null));
-    //     localStorage.clear();
-    //     navigate("/login");
-    // }
 
     return (
         <div className='containerAdmin'>
@@ -180,64 +152,19 @@ export default function LoggedInAdmin(){
             </div>
             <div className='containerAdminRight'>
 
-                {services.products ? <Products setShowErrorModal={setShowErrorModal}/> : null}
-                {services.productEdit ? <ProductEdit setShowErrorModal={setShowErrorModal}/> : null}
+                {services.products ? <Products
+                    setService={setService}
+                    setEditingID={setEditingID}
+                    setShowErrorModal={setShowErrorModal}/>
+                : null}
+                {services.productEdit ? <ProductEdit
+                    editingID={editingID}
+                    setShowErrorModal={setShowErrorModal}/>
+                : null}
                 {services.addProduct ? <AddProduct setShowErrorModal={setShowErrorModal}/> : null}
                 {services.categories ? <Categories setShowErrorModal={setShowErrorModal}/> : null}
                 {services.shippingAddresses ? <Addresses setShowErrorModal={setShowErrorModal}/> : null}
-                {/* {services.dashboard ? <Dashboard /> : null}
-                {services.products ? <Products /> : null}
-                {services.addProduct ? <AddProduct /> : null}
-                {services.users ? <Users /> : null}
-                {services.orders ? <Orders /> : null} */}
             </div>
-            {/* <div className='containerAdminBox'>
-                <div className='containerAdminTop'>
-                    {adminOrServices ?
-                    <button onClick={() => AdminOrServices(false)}>Services</button>
-                    : 
-                    <button onClick={() => AdminOrServices(true)}>My Data</button>
-                    }
-                    <h1>ADMIN</h1>
-                    <button onClick={handleLogout}>Logout</button>
-                </div>
-                <div className='containerAdminBottom'>
-
-                {adminOrServices ?
-                 <AdminPart />
-                 : 
-                 <>
-                    
-                    {showErrorModal && (
-                        <ErrorModal handleLogout={handleLogout} />
-                    )}
-                    <div className='containerAdminLeft'>
-                        <h2>Services</h2>
-                        <ul>
-                            <h2>Products</h2>
-                            <li onClick={() => setService("addProduct")}>Add Product</li>
-                            <li onClick={() => setService("getProduct")}>Get Product</li>
-                            <li onClick={() => setService("deleteProduct")}>Delete Product</li>
-                            <li onClick={() => setService("updateProduct")}>Update Product</li>
-                        </ul>
-                        <ul>
-                            <h2>Categories</h2>
-                            <li onClick={() => setService("CRUDcategory")}>CRAD Category</li>
-                        </ul>
-                    </div>
-                    <div  className='containerAdminRight'>
-                    {services.warning ? <Warning /> : null}
-                    {services.addProduct ? <AddProduct setShowErrorModal={setShowErrorModal}/> : null}
-                    {services.getProduct ? <GetProduct setShowErrorModal={setShowErrorModal}/> : null}
-                    {services.deleteProduct ? <DeleteProduct setShowErrorModal={setShowErrorModal}/> : null}
-                    {services.updateProduct ? <UpdateProduct setShowErrorModal={setShowErrorModal}/> : null}
-                    {services.CRUDcategory ? <CRUD_Category setShowErrorModal={setShowErrorModal}/> : null}
-                    </div>
-                    </>
-                 }
-                    
-                </div>
-            </div> */}
         </div>
     );
 };

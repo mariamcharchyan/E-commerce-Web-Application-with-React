@@ -107,7 +107,7 @@ export default function BoxToys(){
                   onClick={ () => {handleAddProduct(toyData.id);}} 
                   style={{ pointerEvents: toyData.quantity <= 1 ? 'none' : 'block',
                   color: toyData.quantity <= 1 ? '#b0054c' : ''}}
-                > {toyData.quantity <= 1 ? "Not available" : "Add to Basket"}</button>
+                > {toyData.quantity <= 0 ? "IS UNAVAILABL" : "Add to Basket"}</button>
                 </div>
             </div>
           ))}

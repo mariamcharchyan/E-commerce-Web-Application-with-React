@@ -92,15 +92,15 @@
 
 .imageData{
     margin: 10px;
-    border: 0.5px solid #353069;
-    width: 70px;
-    height: 70px;
+    border: 3px solid #ebf1ff;
+    width: 90px;
+    height: 90px;
 
 }
 
 .imageData img{
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
 }
 
 .imageDataDelete{
@@ -111,6 +111,6 @@
     background-color: white;
     cursor: pointer;
     position: relative;
-    top: -79px;
-    left: 51px;
+    top: -100px;
+    left: 72px;
 }

@@ -1,5 +1,5 @@
 .Aboute{
-    background-color: #efefef;
+    /* background-color: #efefef; */
     display: flex;
     flex-direction: column;
     border-radius: 30px;
@@ -23,7 +23,7 @@
 }
 .aboute-container1 p,.aboute-container2 p{
     color: #353069;
-    font-size: 16px;
+    font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
 }
 @media(max-width: 680px){

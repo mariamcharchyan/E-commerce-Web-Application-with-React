@@ -2,9 +2,10 @@
     width: 80%;
     padding: 40px 10%;
     /* padding: 35px 10%; */
-    background-color: #efefef;
+    background-color: #ebf1ff;
     color: #353069;
     display: flex;
+    justify-content: space-around;
   }
   .footer div{
     text-align: center;

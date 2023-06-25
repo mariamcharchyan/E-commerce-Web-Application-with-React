@@ -6,15 +6,15 @@ import { FaWindowClose } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 import ProductEdit from './ProductEdit';
 
-export default function Products({setShowErrorModal}){
+export default function Products({setService,setEditingID,setShowErrorModal}){
     // for Authorization
     const accessToken = localStorage.getItem('token');
 
     const [refresh, setRefresh] = useState(false);
 
     // for update product
-    const [editing, setEditing] = useState(false);
-    const [editingID, setEditingID] = useState(null);
+    // const [editing, setEditing] = useState(false);
+    // const [editingID, setEditingID] = useState(null);
 
     //for Get Products error status
     const [error, setError] = useState('');
@@ -68,27 +68,22 @@ export default function Products({setShowErrorModal}){
               'Authorization': `${accessToken}`
             }
            })
-           .then(response => {
-            setRefresh(!refresh);
-            return response.json();
-            
-        })
-          .then(data => {
-            // setRefresh(!refresh);
-            console.log(data);
-          })
-          .catch((error) => {
-            // setShowErrorModal(true);
-            // console.error('Error delete product:', error);
-            console.log(error);
-          });
+            .then(response =>  response.json())
+            .then(data => {
+                setRefresh(!refresh);
+                console.log(data);
+            })
+            .catch((error) => {
+                // setShowErrorModal(true);
+                console.log(error);
+            });
     }
 
     return (
         <div className='getProductContainer-0'>
         <div className='getProductContainer'>
-            {editing === false ?
-            <>
+            {/* {editing === false ?
+            <> */}
             <div><h2>Products</h2></div>
             <div className='getProductMain'>
                 {productsData.map((product) => (
@@ -99,19 +94,19 @@ export default function Products({setShowErrorModal}){
                         <div className='getProductName'>{product.name}</div>
                         <div className='getProductPrice'>$ {product.price} USD</div>
                         <div className='getProductIcons'>
-                            <div className='getProductIconEdit'><MdEdit onClick={() => {setEditingID(product.id); setEditing(true); }}/></div>
+                            <div className='getProductIconEdit'><MdEdit onClick={() => {setEditingID(product.id); setService("productEdit"); }}/></div>
                             <div className='getProductIconDelete'><RiDeleteBin6Fill onClick={() => handleDeleteProduct(product.id)}/></div>
                         </div>
                     </div>
                 ))}
             </div>
-            </> : <>
+            {/* </> : <>
                 <ProductEdit
                     editingID={editingID}
                     editing={editing}
                     setEditing={setEditing}
                 />
-            </>} 
+            </>}  */}
 
         </div>
         </div>

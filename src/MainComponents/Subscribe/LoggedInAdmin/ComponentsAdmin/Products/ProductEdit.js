@@ -1,32 +1,52 @@
 import './Products.css';
 import Modal from 'react-modal';
 import { useState, useEffect } from 'react';
+import { BsCheckCircle } from "react-icons/bs";
+import { FaWindowClose } from "react-icons/fa";
 
-export default function ProductEdit({editingID,editing,setEditing}){
+export default function ProductEdit({editingID,setShowErrorModal}){
     // for Authorization
     const accessToken = localStorage.getItem('token');
 
     const [refresh, setRefresh] = useState(false);
-
+    
+    const [editing, setEditing] = useState(false);
 
     //for Get Products data
     const [productData, setproductData] = useState([]);
     console.log(productData);
-    //for Update data
-
-    // discountPercentage: data.discountPercentage,
-    // quantity: data.quantity,
-    // quantity_sold: data.quantity_sold,
-    // description: data.description,
+   
     const [nameUpdate, setNameUpdate] = useState(productData.name);
     const [priceUpdate, setPriceUpdate] = useState(productData.price);
     const [discountPercentageUpdate, setDiscountPercentageUpdate] = useState(productData.discountPercentage);
-    const [quantity_sold, setQuantity_sold] = useState(productData.quantity_sold);
-    const [quantity, setQuantity] = useState(productData.quantity);
+    const [quantityUpdate, setQuantityUpdate] = useState(productData.quantity);
     const [descriptionUpdate, setDescriptionUpdate] = useState(productData.description);
     const [categoryUpdate, setCategoryUpdate] = useState(productData.category);
     console.log(categoryUpdate);
 
+    // for categories data 
+    const [categories, setCategories] = useState([]);
+    
+    // for categories data 
+    useEffect(() => {
+        fetch('http://localhost:5000/categories', {
+            method: 'GET',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${accessToken}`
+            }
+        })
+            .then(response => response.json())
+            .then(dataCategories => {
+                const newDataCategories = dataCategories.map(data => ({ id: data.id, name: data.name }));
+                setCategories(newDataCategories);
+            })
+            .catch(error => {
+                // setShowErrorModal(true);
+                // setError(`Error categories: ${error}`)
+                console.error('Error get categories:', error);
+        })
+    },[]);
 
     // for products data 
     useEffect(() => {
@@ -53,8 +73,15 @@ export default function ProductEdit({editingID,editing,setEditing}){
                      createdAt: data.createdAt,
                      updatedAt: data.updatedAt
                     };
-                    // console.log(newDataProducts);
-                     setproductData(newDataProducts);
+                    setproductData(newDataProducts);
+                    console.log(newDataProducts);
+                    setNameUpdate(data.name);
+                    setPriceUpdate(data.price);
+                    setDiscountPercentageUpdate(data.discountPercentage);
+                    setQuantityUpdate(data.quantity);
+                    setDescriptionUpdate(data.description);
+                    setCategoryUpdate(data.categoryId);
+
             })
             .catch(error => {
                 // setShowErrorModal(true);
@@ -64,62 +91,40 @@ export default function ProductEdit({editingID,editing,setEditing}){
     },[refresh]);
 
 
-    // for categories data 
-    const [categories, setCategories] = useState([]);
-    
-    // for categories data 
-    useEffect(() => {
-        fetch('http://localhost:5000/categories', {
-            method: 'GET',
-            headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${accessToken}`
-            }
-        })
-            .then(response => response.json())
-            .then(dataCategories => {
-                const newDataCategories = dataCategories.map(data => ({ id: data.id, name: data.name }));
-                setCategories(newDataCategories);
-            })
-            .catch(error => {
-                // setShowErrorModal(true);
-                // setError(`Error categories: ${error}`)
-                console.error('Error get categories:', error);
-        })
-    },[]);
-
-    // const [editing, setEditing] = useState(false);
-    const handleGoBack = () => {
-        setEditing(!editing);
-    }
-
-
     const handleCategoryChange = (event) => {
         setCategoryUpdate(event.target.value);
     };
     console.log(productData.images);
-//     // for Update Product data with id
-//     const handleUpdate = (id) => {
-//         fetch(`http://localhost:5000/product/update/${id}`, {
-//             method: 'PUT',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `${accessToken}`
-//             },
-//             body: JSON.stringify(updateProductData)
-//         })
-//         .then(response => {
-//             setIsEditing(true)
-//             return response.json()
-//           })
-//         .then(data => {
-//             console.log(data);
-//         })
-//         .catch((error) => {
-//             setShowErrorModal(true);
-//             console.error('Error:', error);
-//         });
-//     }
+    
+    // for Update Product data with id
+    const handleUpdate = () => {
+        fetch(`http://localhost:5000/product/update/${editingID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${accessToken}`
+            },
+            body: JSON.stringify({
+                categoryId: categoryUpdate,
+                name: nameUpdate,
+                price: priceUpdate,
+                discountPercentage: discountPercentageUpdate,
+                quantity: quantityUpdate,
+                description: descriptionUpdate
+            })
+        })
+        .then(response => {
+            return response.json()
+          })
+        .then(data => {
+            setRefresh(!refresh);
+            console.log(data);
+        })
+        .catch((error) => {
+            setShowErrorModal(true);
+            console.error('Error:', error);
+        });
+    }
 
 
 
@@ -145,59 +150,63 @@ export default function ProductEdit({editingID,editing,setEditing}){
 
 
     return (
-        <div className='addProductContainer-0'>
-            <div className='addProductContainer'>
-                <div><h2>Add Product</h2></div>
-                <div className='addProduct'>
-                    <div className='name'>
+        <div className='EditProductContainer-0'>
+            <div className='EditProductContainer'>
+                <div><h2>Edit Product</h2></div>
+                <div className='EditProduct'>
+                    <div className='EditProductName'>
                         <h5>Name:</h5>
                         <p>{productData.name}</p>
                         <input type="text" value={nameUpdate} onChange={(event) => setNameUpdate(event.target.value)} />
                         {/* <input type="text" value={name} onChange={(event) => setName(event.target.value)} /> */}
                     </div>
-                    <div className='category' >
+                    <div className='EditProductCategory' >
                         <h5>Category:</h5>
                         <p>{productData.category}</p>
                         <select value={categoryUpdate} onChange={handleCategoryChange}>
                             <option value="">Select category</option>
-                            {categories.map((category) => (
+                            {categories?.map((category) => (
                                 <option key={category.id} value={category.id}>{category.name}</option>
                             ))}
                         </select>
                     </div>
-                    <div className='price'>
+                    <div className='EditProductPrice'>
                         <h5>Price($):</h5>
                         <p>{productData.price}</p>
-                        {/* <input type="text" value={price} onChange={(event) => setPrice(event.target.value)} /> */}
+                        <input type="text" value={priceUpdate} onChange={(event) => setPriceUpdate(event.target.value)} />
                     </div>
-                    <div className='discount_percentage'>
+                    <div className='EditProductDiscount_percentage'>
                         <h5>Discount Percentage(%):</h5>
                         <p>{productData.discountPercentage}</p>
-                        {/* <input type="text" value={discountPercentage} onChange={(event) => setDiscountPercentage(event.target.value)} /> */}
+                        <input type="text" value={discountPercentageUpdate} onChange={(event) => setDiscountPercentageUpdate(event.target.value)} />
                     </div>
-                    <div className='quantity'>
+                    <div className='EditProductQuantity'>
                         <h5>Quantity:</h5>
                         <p>{productData.quantity}</p>
-                        {/* <input type="text" value={quantity} onChange={(event) => setQuantity(event.target.value)} /> */}
+                        <input type="text" value={quantityUpdate} onChange={(event) => setQuantityUpdate(event.target.value)} />
                     </div>
-                    <div className='description'>
+                    <div className='EditProductQuantitySold'>
+                        <h5>Quantity sold:</h5>
+                        <p>{productData.quantity_sold}</p>
+                       </div>
+                    <div className='EditProductDescription'>
                         <h5>Description:</h5>
                         <p>{productData.description}</p>
-                        {/* <textarea className="description" value={description} onChange={(event) => setDescription(event.target.value)}></textarea> */}
+                        <textarea className="description" value={descriptionUpdate} onChange={(event) => setDescriptionUpdate(event.target.value)}></textarea>
                     </div>
-                    <div className='pictures'>
+                    <div className='EditProductPictures'>
                         <h5>Pictures:</h5>
-                        <div>
-                            {/* {productData.images.map((imageData) => (
-                                <div className='imageData' key={imageData.id}>
+                        <div className='EditAllPictures'>
+                            {productData?.images?.map((imageData) => (
+                                <div className='EditImageData' key={imageData.id}>
                                     <img src={`http://localhost:5000/${imageData.imagePath}`} alt="Image" />
-                                    <div className='imageDataDelete'><FaWindowClose/></div>
+                                    <div className='EditImageDataDelete'><FaWindowClose/></div>
                                 </div>
-                            ))} */}
+                            ))}
                         </div>
                         {/* <textarea className="description" value={description} onChange={(event) => setDescription(event.target.value)}></textarea> */}
                     </div>
-
+                    <div><button onClick={() => handleUpdate()}>handleUpdate</button></div>
                     {/* {successed === 'Product added successfully'?
                     <>
                     <div className='successed' > 

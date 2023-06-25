@@ -7,7 +7,7 @@ export default function Footer (){
         <footer>
         <div className="footer">
             <div className="col-1">
-                <h4>USEdirpwdFUL LINKS</h4>
+                <h4><b>USEFUL LINKS</b></h4>
                 <a >About</a>
                 <a >Services</a>
                 <a >Contact</a>
@@ -21,13 +21,13 @@ export default function Footer (){
                 <button type="submit">SUBSCRIBE NOW</button>
             </div> */}
             <div className="col-3">
-                <h4>CONTACT</h4>
+                <h4><b>CONTACT</b></h4>
                 <div className="social-icons">
                     <FaYoutube className='social-icon'/>
                     <FaFacebook className='social-icon'/>
                     <FaGithub className='social-icon'/>
                     <FaLinkedin className='social-icon'/>
-                    <FaInstagram className='social-icon'/>
+                    {/* <FaInstagram className='social-icon'/> */}
                 </div>
                 
             </div>
