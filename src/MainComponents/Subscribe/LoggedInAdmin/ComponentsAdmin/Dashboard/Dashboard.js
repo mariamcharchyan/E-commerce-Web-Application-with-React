@@ -1,17 +1,42 @@
 import './Dashboard.css';
-
-// import { useState } from 'react';
-// import Modal from 'react-modal';
-// import { useNavigate } from 'react-router-dom';
-// import { useDispatch } from "react-redux";
-// import { fetchLoginForm } from "../../LogIn/reducerLoginForm";
+import { FcSalesPerformance } from "react-icons/fc";
+import { BsBagCheckFill } from "react-icons/bs";
+import { BsBasket3Fill } from "react-icons/bs";
 
 export default function Dashboard({setShowErrorModal}) {
 
     return (
         <div className='DashboardContainer-0'>
             <div className='DashboardContainer'>
-                Dashboard
+                <div className='DashboardHeader'>
+                    <div className='DashboardTotalSales'>
+                        <div className='DashboardTotalSalesIcon'>
+                            <FcSalesPerformance/>
+                        </div>
+                        <div className='DashboardText'>
+                            <div>Total Sales</div>
+                            <div>$ 2588</div>
+                        </div>
+                    </div>
+                    <div className='DashboardTotalOrders'>
+                        <div className='DashboardTotalOrdersIcon'>
+                            <BsBagCheckFill/>
+                        </div>
+                        <div className='DashboardText'>
+                            <div>Total Orders</div>
+                            <div>588</div>
+                        </div>
+                    </div>
+                    <div className='DashboardTotalProducts'>
+                        <div className='DashboardTotalProductsIcon'>
+                            <BsBasket3Fill/>
+                        </div>
+                        <div className='DashboardText'>
+                            <div>Total Products</div>
+                            <div>588</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         

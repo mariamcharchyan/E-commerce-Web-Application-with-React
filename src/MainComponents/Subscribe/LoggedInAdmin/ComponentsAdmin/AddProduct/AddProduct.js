@@ -166,11 +166,11 @@ export default function AddProduct({setShowErrorModal}){
                     </select>
                 </div>
                 <div className='price'>
-                    <h5>Price:</h5>
+                    <h5>Price ($):</h5>
                     <input type="text" value={price} onChange={(event) => setPrice(event.target.value)} />
                 </div>
                 <div className='discount_percentage'>
-                    <h5>Discount Percentage:</h5>
+                    <h5>Discount Percentage (%):</h5>
                     <input type="text" value={discountPercentage} onChange={(event) => setDiscountPercentage(event.target.value)} />
                 </div>
                 <div className='quantity'>

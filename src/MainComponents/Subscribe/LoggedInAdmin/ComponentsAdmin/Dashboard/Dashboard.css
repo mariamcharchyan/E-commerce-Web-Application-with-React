@@ -8,3 +8,38 @@
     min-width: 100%;
     min-height: 100%;
 }
+
+.DashboardHeader{
+    display: flex;
+    justify-content: space-around;
+}
+
+.DashboardTotalSales, .DashboardTotalOrders, .DashboardTotalProducts{
+    background-color: #ebf1ff;
+    margin: 20px;
+    width: 260px;
+    height: 100px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DashboardTotalSalesIcon, .DashboardTotalOrdersIcon, .DashboardTotalProductsIcon{
+    font-size: 40px;
+    margin-right: 20px;
+}
+
+.DashboardTotalOrdersIcon{
+    color: green;
+}
+
+.DashboardTotalProductsIcon{
+    color: green;
+}
+
+.DashboardText{
+    font-size: 25px;
+    font-weight: 600;
+    color: #353069;
+}
