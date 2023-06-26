@@ -127,27 +127,30 @@ export default function ProductEdit({editingID,setShowErrorModal}){
     }
 
 
-
-//     //for Update data
-//     useEffect(() => setUpdateProductData(
-//         {
-//             image: imageUpdate,
-//             name: nameUpdate,
-//             price: priceUpdate,
-//             discount_percentage: discountPercentageUpdate,
-//             quantity: quantity,
-//             description: descriptionUpdate,
-//             categories_id: categoryUpdate
-//         }),[
-//             imageUpdate,
-//             nameUpdate,
-//             priceUpdate,
-//             discountPercentageUpdate,
-//             descriptionUpdate,
-//             categoryUpdate,
-//             quantity
-//     ]);
-
+    // // for Delete Product data with id
+    // const handleDelete = (id) => {
+    //     const accessToken = localStorage.getItem('token');
+    //     fetch(`http://localhost:5000/product/delete/${id}`, {
+    //         method: 'DELETE',
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //           'Authorization': `${accessToken}`
+    //         }
+    //     })
+    //     .then(response => {
+    //         setRefresh(!refresh);
+    //         console.log(refresh);
+    //         return response.json();
+    //     })
+    //     .then(data => {
+    //         console.log(data);
+    //     })
+    //     .catch((error) => {
+    //         setShowErrorModal(true);
+    //         setError(`Error: ${error}`)
+    //         console.error('Error delete product:', error);
+    //     });
+    // }
 
     return (
         <div className='EditProductContainer-0'>

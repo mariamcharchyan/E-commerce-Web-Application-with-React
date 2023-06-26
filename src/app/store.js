@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import reducerBoxToys from '../MainComponents/BoxToys/reducerBoxToys';
-import reducerBoxToyID from '../MainComponents/BoxToys/reducerBoxToyID';
+import reducerBoxToys from '../MainComponents/Shop/reducerBoxToys';
+import reducerBoxToyID from '../MainComponents/Shop/reducerBoxToyID';
 import reducerLoginForm from '../MainComponents/Subscribe/LogIn/reducerLoginForm';
 import reducerBasket from '../MainComponents/Basket/reducerBasket';
 

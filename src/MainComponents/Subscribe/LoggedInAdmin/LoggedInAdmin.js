@@ -26,6 +26,7 @@ import Addresses from './ComponentsAdmin/Addreses/Addresses';
 import Products from './ComponentsAdmin/Products/Products';
 import AddProduct from './ComponentsAdmin/AddProduct/AddProduct';
 import ProductEdit from './ComponentsAdmin/Products/ProductEdit';
+import Dashboard from './ComponentsAdmin/Dashboard/Dashboard';
 
 
 export default function LoggedInAdmin(){
@@ -151,7 +152,7 @@ export default function LoggedInAdmin(){
                 </div>
             </div>
             <div className='containerAdminRight'>
-
+                {services.dashboard ? <Dashboard setShowErrorModal={setShowErrorModal}/> : null}
                 {services.products ? <Products
                     setService={setService}
                     setEditingID={setEditingID}

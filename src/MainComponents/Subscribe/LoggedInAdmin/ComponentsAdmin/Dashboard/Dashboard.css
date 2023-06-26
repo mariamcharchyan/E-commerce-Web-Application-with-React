@@ -1,0 +1,10 @@
+.DashboardContainer-0{
+    margin: 30px;
+}
+
+.DashboardContainer{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: 100%;
+}

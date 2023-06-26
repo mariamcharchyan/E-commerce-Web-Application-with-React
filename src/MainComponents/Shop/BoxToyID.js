@@ -2,7 +2,7 @@ import './BoxToyID.css';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchBoxToyDataID } from '../BoxToys/reducerBoxToyID';
+import { fetchBoxToyDataID } from './reducerBoxToyID';
 import { useState } from 'react';
 
 
